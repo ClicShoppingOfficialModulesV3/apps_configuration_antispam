@@ -4,8 +4,8 @@
  *  @copyright 2008 - https://www.clicshopping.org
  *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
  *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4
- *  @Info : https://www.clicshopping.org/forum/trademark/
+ *  @licence MIT - Portion of osCommerce 2.4 
+ *
  *
  */
 
@@ -33,8 +33,7 @@
         $this->enabled = (MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True');
       }
 
-      if ((!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False') && (!defined('CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND') || CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND == 'False')) {
-
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False' || CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND == 'False') {
         $this->enabled = false;
       }
     }
@@ -45,7 +44,6 @@
       if (isset($_GET['Account'] ) && isset($_GET['TellAFriend']) ) {
         $tell_a_friend_invisible_antispam = '<!--  tell_a_friend_invisible_invisible_antispam start -->' . "\n";
         $tell_a_friend_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'class="hiddenRecaptcha"');
-        $tell_a_friend_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'class="hiddenRecaptcha"');
         $tell_a_friend_invisible_antispam .= '<!-- tell_a_friend_invisible_invisible_antispam end -->' . "\n";
 
         $CLICSHOPPING_Template->addBlock($tell_a_friend_invisible_antispam, $this->group);

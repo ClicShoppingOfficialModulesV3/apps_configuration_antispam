@@ -4,8 +4,8 @@
  *  @copyright 2008 - https://www.clicshopping.org
  *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
  *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4
- *  @Info : https://www.clicshopping.org/forum/trademark/
+ *  @licence MIT - Portion of osCommerce 2.4 
+ *
  *
  */
 
@@ -33,7 +33,7 @@
         $this->enabled = (MODULES_CREATE_GUEST_ACCOUNT_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True');
       }
 
-      if ((!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False') && (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST') || CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST == 'False')) {
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False' || CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST == 'False') {
         $this->enabled = false;
       }
     }
@@ -41,10 +41,9 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Account'] ) && isset($_GET['CreateGuestAccount'])  && !isset($_GET['Success']) ) {
+      if (isset($_GET['Account'] ) && isset($_GET['CreateGuestAccount']) ) {
         $create_guest_account_invisible_antispam = '<!--  create_guest_account_invisible_invisible_antispam start -->' . "\n";
         $create_guest_account_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'class="hiddenRecaptcha"');
-        $create_guest_account_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'class="hiddenRecaptcha"');
         $create_guest_account_invisible_antispam .= '<!-- create_guest_account_invisible_invisible_antispam end -->' . "\n";
 
         $CLICSHOPPING_Template->addBlock($create_guest_account_invisible_antispam, $this->group);
@@ -62,11 +61,12 @@
     public function install() {
       $CLICSHOPPING_Db = Registry::get('Db');
 
+
       $CLICSHOPPING_Db->save('configuration', [
           'configuration_title' => 'Do you want activate this module ?',
           'configuration_key' => 'MODULES_CREATE_GUEST_ACCOUNT_SIMPLE_INVISIBLE_ANTISPAM_STATUS',
           'configuration_value' => 'True',
-          'configuration_description' => 'Do you want activate this module in your shop ?<br >Use this module only if you have installed the antispam',
+          'configuration_description' => 'Do you want activate this module in your shop ?',
           'configuration_group_id' => '6',
           'sort_order' => '1',
           'set_function' => 'clic_cfg_set_boolean_value(array(\'True\', \'False\'))',

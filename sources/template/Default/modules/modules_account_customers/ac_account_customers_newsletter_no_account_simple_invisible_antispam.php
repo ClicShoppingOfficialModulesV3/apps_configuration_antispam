@@ -4,8 +4,8 @@
  *  @copyright 2008 - https://www.clicshopping.org
  *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
  *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4
- *  @Info : https://www.clicshopping.org/forum/trademark/
+ *  @licence MIT - Portion of osCommerce 2.4 
+ *
  *
  */
 
@@ -44,7 +44,6 @@
       if (isset($_GET['Account']) &&  isset($_GET['NewslettersNoAccount'])) {
         $account_customers_newsletter_no_account_invisible_antispam = '<!--  account_customers_newsletter_no_account_invisible_invisible_antispam start -->' . "\n";
         $account_customers_newsletter_no_account_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'class="hiddenRecaptcha"');
-        $account_customers_newsletter_no_account_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'class="hiddenRecaptcha"');
         $account_customers_newsletter_no_account_invisible_antispam .= '<!-- account_customers_newsletter_no_account_invisible_invisible_antispam end -->' . "\n";
 
         $CLICSHOPPING_Template->addBlock($account_customers_newsletter_no_account_invisible_antispam, $this->group);

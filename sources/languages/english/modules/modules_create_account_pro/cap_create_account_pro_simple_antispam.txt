@@ -1,0 +1,4 @@
+modules_create_account_pro_simple_antispam_title = Do you want display a numeric antispam ?
+modules_create_account_pro_simple_antispam_description = Display a numeric antispam
+
+entry_simple_antispam = How many :

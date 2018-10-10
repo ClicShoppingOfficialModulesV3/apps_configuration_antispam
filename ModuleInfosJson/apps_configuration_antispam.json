@@ -5,12 +5,12 @@
   "is_free":   "yes",
   "is_core": "no",
   "website_link_to_sell" : "",
-  "version":			"1.0.2",
+  "version":			1.0,
   "req_core_version":	3.0,
   "license":			"GPL 2 - MIT",
   "tag":			    "configuration, antispam, recaptcha",
   "install":            "includes/ClicShopping/Apps/Configuration/",
-  "module_directory":   "Configuration",
+  "module_directory":   "",
   "apps_name":          "Antispam",
   "type_module":      "Fixe",
   "dependance":       "",
@@ -22,8 +22,8 @@
       "name":		    "ClicShopping Team",
       "company":	    "Innov-concept",
       "email":	      "",
-      "website":	    "https://www.clicshopping.org",
-      "Community":	  "https://www.clicshopping.org"
+      "website":	    "http://www.clicshopping.com",
+      "Community":	  "http://www.clicshopping.org"
     }
   ]
 }

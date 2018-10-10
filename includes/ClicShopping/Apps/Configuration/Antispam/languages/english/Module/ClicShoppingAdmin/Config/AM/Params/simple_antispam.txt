@@ -1,0 +1,6 @@
+cfg_recaptcha_antispam_simple_antispam_title = Simple antispam
+cfg_recaptcha_antispam_simple_antispam_description = Display  a field with a random numeric number to insert
+
+cfg_recaptcha_antispam_simple_antispam_true = True
+cfg_recaptcha_antispam_simple_antispam_false = False
+

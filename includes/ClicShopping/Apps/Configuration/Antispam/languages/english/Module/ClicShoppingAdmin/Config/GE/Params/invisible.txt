@@ -1,4 +1,4 @@
-cfg_recaptcha_antispam_invisible_title = Invisible recaptcha
+cfg_recaptcha_antispam_invisible_title = InvisIble recaptcha
 cfg_recaptcha_antispam_invisible_description = This setting allow to create an invisible fields inside your form to catch the spam robot
 <br /><strong>option: You must install the module or Apps to use it and the modules activated</strong>
 

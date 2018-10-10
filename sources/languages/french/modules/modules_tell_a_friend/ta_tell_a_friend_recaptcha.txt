@@ -1,0 +1,2 @@
+ modules_tell_a_friend_recaptcha_title = Souhaitez-vous installer Google recaptcha
+ modules_tell_a_friend_antispam_description = Affiche Google recaptcha

@@ -1,0 +1,2 @@
+modules_contact_us_recaptcha_title = Souhaitez-vous installer le Google recaptcha ?
+modules_contact_us_recaptcha_description =Affiche le google recaptcha

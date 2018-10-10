@@ -1,0 +1,2 @@
+ modules_tell_a_friend_recaptcha_title = Do you want to display Google recaptcha
+ modules_tell_a_friend_antispam_description = Display Google recaptcha

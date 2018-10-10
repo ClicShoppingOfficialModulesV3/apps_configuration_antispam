@@ -4,8 +4,8 @@
  *  @copyright 2008 - https://www.clicshopping.org
  *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
  *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4
- *  @Info : https://www.clicshopping.org/forum/trademark/
+ *  @licence MIT - Portion of osCommerce 2.4 
+ *
  *
  */
 
@@ -33,7 +33,7 @@
         $this->enabled = (MODULES_CREATE_ACCOUNT_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True');
       }
 
-      if ((!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False') && (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO') || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO == 'False')) {
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False' || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT == 'False') {
         $this->enabled = false;
       }
     }
@@ -44,8 +44,6 @@
       if (isset($_GET['Account']) && isset($_GET['Create']) && !isset($_GET['Success'])) {
         $create_account_invisible_antispam = '<!--  create_account_invisible_invisible_antispam start -->' . "\n";
         $create_account_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'class="hiddenRecaptcha"');
-        $create_account_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'class="hiddenRecaptcha"');
-
         $create_account_invisible_antispam .= '<!-- create_account_invisible_invisible_antispam end -->' . "\n";
 
         $CLICSHOPPING_Template->addBlock($create_account_invisible_antispam, $this->group);

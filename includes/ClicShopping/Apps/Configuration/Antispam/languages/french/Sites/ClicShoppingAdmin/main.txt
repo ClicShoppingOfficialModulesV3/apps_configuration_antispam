@@ -1,16 +1,15 @@
 heading_title = Antispam
-module_am_title = Antispam
-module_am_short_title = Antispam
+module_ad_title = Antispam
+module_ad_short_title = Antispam
 
-title_menu = Antispam
 text_antispam = Antispam
 text_configure =  Configurer App Module
 
 text_intro = Cette app vous permet d'inclure une gestion des antispams <br /><br />
 - Activer ce module qui est situé dans le menu Configuration
 
-module_am_introduction = Le processus d'installation installe la base de données et le menu
-module_am_short_title = AntiSpam
+module_ad_introduction = Le processus d'installation installe la base de données et le menu
+module_ad_short_title = AntiSpam
 
 button_install_title = Installer
 button_configure = Configurer

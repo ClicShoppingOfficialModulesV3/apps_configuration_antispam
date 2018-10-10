@@ -1,2 +1,1 @@
-module_am_short_title = Antispam
-title_menu = Antispam
+module_ad_short_title = Antispam

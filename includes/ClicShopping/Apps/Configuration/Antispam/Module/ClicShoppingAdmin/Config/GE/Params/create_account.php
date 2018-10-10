@@ -1,36 +1,33 @@
 <?php
   /**
-   *
-   * @copyright 2008 - https://www.clicshopping.org
-   * @Brand : ClicShopping(Tm) at Inpi all right Reserved
-   * @Licence GPL 2 & MIT
-   * @licence MIT - Portion of osCommerce 2.4
-   * @Info : https://www.clicshopping.org/forum/trademark/
-   *
-   */
+ *
+ *  @copyright 2008 - https://www.clicshopping.org
+ *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
+ *  @Licence GPL 2 & MIT
+ *  @licence MIT - Portion of osCommerce 2.4 
+ *
+ *
+ */
 
 
   namespace ClicShopping\Apps\Configuration\Antispam\Module\ClicShoppingAdmin\Config\GE\Params;
 
   use ClicShopping\OM\HTML;
 
-  class create_account extends \ClicShopping\Apps\Configuration\Antispam\Module\ClicShoppingAdmin\Config\ConfigParamAbstract
-  {
+  class create_account extends \ClicShopping\Apps\Configuration\Antispam\Module\ClicShoppingAdmin\Config\ConfigParamAbstract {
     public $default = 'False';
     public $sort_order = 50;
 
-    protected function init()
-    {
-      $this->title = $this->app->getDef('cfg_recaptcha_antispam_create_account_title');
-      $this->description = $this->app->getDef('cfg_recaptcha_antispam_create_account_description');
+    protected function init() {
+        $this->title = $this->app->getDef('cfg_recaptcha_antispam_create_account_title');
+        $this->description = $this->app->getDef('cfg_recaptcha_antispam_create_account_description');
     }
 
-    public function getInputField()
-    {
+    public function getInputField()  {
       $value = $this->getInputValue();
 
-      $input = HTML::radioField($this->key, 'True', $value, 'id="' . $this->key . '1" autocomplete="off"') . $this->app->getDef('cfg_recaptcha_antispam_create_account_true') . ' ';
-      $input .= HTML::radioField($this->key, 'False', $value, 'id="' . $this->key . '2" autocomplete="off"') . $this->app->getDef('cfg_recaptcha_antispam_create_account_false');
+      $input =  HTML::radioField($this->key, 'True', $value, 'id="' . $this->key . '1" autocomplete="off"') . $this->app->getDef('cfg_recaptcha_antispam_create_account_true') . ' ';
+      $input .=  HTML::radioField($this->key, 'False', $value, 'id="' . $this->key . '2" autocomplete="off"') . $this->app->getDef('cfg_recaptcha_antispam_create_account_false');
 
       return $input;
     }
