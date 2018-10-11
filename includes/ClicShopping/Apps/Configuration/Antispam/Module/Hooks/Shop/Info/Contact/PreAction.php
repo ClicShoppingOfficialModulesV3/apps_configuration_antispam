@@ -15,9 +15,8 @@
   use ClicShopping\OM\CLICSHOPPING;
   use ClicShopping\OM\HTML;
 
-  use ClicShopping\Apps\Configuration\Antispam\Classes\AntispamClass;
-
   use ClicShopping\Apps\Configuration\Antispam\Antispam as AntispamApp;
+  use ClicShopping\Apps\Configuration\Antispam\Classes\AntispamClass;
 
   class PreAction implements \ClicShopping\OM\Modules\HooksInterface {
     protected $app;

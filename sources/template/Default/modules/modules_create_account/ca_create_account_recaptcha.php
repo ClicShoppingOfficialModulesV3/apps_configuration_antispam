@@ -4,7 +4,7 @@
  *  @copyright 2008 - https://www.clicshopping.org
  *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
  *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4 
+ *  @licence MIT - Portion of osCommerce 2.4
  *
  *
  */
@@ -45,7 +45,7 @@
 
       if (isset($_GET['Account']) && isset($_GET['Create']) && !isset($_GET['Success'])) {
        $content_width = (int)MODULES_CREATE_ACCOUNT_RECAPTCHA_CONTENT_WIDTH;
-var_dump('-------');
+
         $create_account_recaptcha = '<!--  create_account_recaptcha start -->' . "\n";
 
         $recaptcha = $CLICSHOPPING_Hooks->output('AllShop', 'GoogleRecaptchaDisplay', null, 'display');

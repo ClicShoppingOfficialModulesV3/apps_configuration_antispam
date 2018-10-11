@@ -19,7 +19,6 @@
 
   class GoogleRecaptchaDisplay implements \ClicShopping\OM\Modules\HooksInterface {
     protected $app;
-    protected $antispam;
 
     public function __construct() {
       if (!Registry::exists('Antispam')) {

@@ -12,6 +12,7 @@
   namespace ClicShopping\Apps\Configuration\Antispam\Classes;
 
   use ClicShopping\OM\CLICSHOPPING;
+  use ClicShopping\OM\HTML;
 
   class AntispamClass {
 /**
@@ -62,9 +63,4 @@
 
       return $error;
     }
-
-
-
-
-
   }

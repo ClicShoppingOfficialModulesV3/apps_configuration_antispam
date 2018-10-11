@@ -11,6 +11,8 @@
 
   namespace ClicShopping\Apps\Configuration\Antispam\Module\Hooks\Shop\AllShop;
 
+  use ClicShopping\OM\Registry;
+
   use ClicShopping\Apps\Configuration\Antispam\Antispam as AntispamApp;
 
   use ClicShopping\Apps\Configuration\Antispam\Classes\reCAPTCHA;

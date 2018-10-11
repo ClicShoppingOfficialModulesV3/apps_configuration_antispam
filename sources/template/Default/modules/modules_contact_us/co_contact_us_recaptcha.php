@@ -13,7 +13,7 @@
   use ClicShopping\OM\CLICSHOPPING;
   use ClicShopping\OM\Mail;
 
-  class co_contact_us_recaptha {
+  class co_contact_us_recaptcha {
     public $code;
     public $group;
     public $title;
@@ -33,7 +33,7 @@
         $this->enabled = (MODULES_CONTACT_US_RECAPTCHA_STATUS == 'True');
       }
 
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') || CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'False' || CLICSHOPPING_APP_ANTISPAM_AM_CONTACT == 'False') {
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') || CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'False' || CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False') {
          $this->enabled = false;
       }
     }
