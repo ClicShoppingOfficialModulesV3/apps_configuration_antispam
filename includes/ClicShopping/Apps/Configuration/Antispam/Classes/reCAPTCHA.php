@@ -15,7 +15,7 @@
 
 /**
  * reCAPTCHA v3 class
- * 
+ *
  * @author ShevAbam
  * @link https://github.com/shevabam/recaptcha
  * @license GNU GPL 2.0
@@ -24,35 +24,35 @@ class reCAPTCHA
 {
     /**
      * ReCAPTCHA URL verifying
-     * 
+     *
      * @var string
      */
     const VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
 
     /**
      * Public key
-     * 
+     *
      * @var string
      */
     private $siteKey;
 
     /**
      * Private key
-     * 
+     *
      * @var string
      */
     private $secretKey;
 
     /**
      * Remote IP address
-     * 
+     *
      * @var string
      */
     protected $remoteIp = null;
 
     /**
      * Supported themes
-     * 
+     *
      * @var array
      * @see https://developers.google.com/recaptcha/docs/display#config
      */
@@ -60,7 +60,7 @@ class reCAPTCHA
 
     /**
      * Captcha theme. Default : light
-     * 
+     *
      * @var string
      * @see https://developers.google.com/recaptcha/docs/display#config
      */
@@ -68,7 +68,7 @@ class reCAPTCHA
 
     /**
      * Supported types
-     * 
+     *
      * @var array
      * @see https://developers.google.com/recaptcha/docs/display#config
      */
@@ -76,7 +76,7 @@ class reCAPTCHA
 
     /**
      * Captcha type. Default : image
-     * 
+     *
      * @var string
      * @see https://developers.google.com/recaptcha/docs/display#config
      */
@@ -84,7 +84,7 @@ class reCAPTCHA
 
     /**
      * Captcha language. Default : auto-detect
-     * 
+     *
      * @var string
      * @see https://developers.google.com/recaptcha/docs/language
      */
@@ -92,7 +92,7 @@ class reCAPTCHA
 
     /**
      * Captcha size. Default : normal
-     * 
+     *
      * @var string
      * @see https://developers.google.com/recaptcha/docs/display#render_param
      */
@@ -102,7 +102,7 @@ class reCAPTCHA
 
     /**
      * Initialize site and secret keys
-     * 
+     *
      * @param string $siteKey Site key from ReCaptcha dashboard
      * @param string $secretKey Secret key from ReCaptcha dashboard
      * @return void
@@ -115,7 +115,7 @@ class reCAPTCHA
 
     /**
      * Set site key
-     * 
+     *
      * @param string $key
      * @return object
      */
@@ -128,7 +128,7 @@ class reCAPTCHA
 
     /**
      * Set secret key
-     * 
+     *
      * @param string $key
      * @return object
      */
@@ -141,7 +141,7 @@ class reCAPTCHA
 
     /**
      * Set remote IP address
-     * 
+     *
      * @param string $ip
      * @return object
      */
@@ -213,7 +213,7 @@ class reCAPTCHA
 
     /**
      * Generate the JS code of the captcha
-     * 
+     *
      * @return string
      */
     public function getScript()
@@ -227,7 +227,7 @@ class reCAPTCHA
 
     /**
      * Generate the HTML code block for the captcha
-     * 
+     *
      * @return string
      */
     public function getHtml()
@@ -251,7 +251,7 @@ class reCAPTCHA
 
     /**
      * Checks the code given by the captcha
-     * 
+     *
      * @param string $response Response code after submitting form (usually $_POST['g-recaptcha-response'])
      * @return bool
      */
@@ -259,7 +259,7 @@ class reCAPTCHA
     {
         if (is_null($this->secretKey))
             throw new \Exception('You must set your secret key');
-           
+
         if (empty($response))
             return false;
 
@@ -270,7 +270,7 @@ class reCAPTCHA
         );
 
         $url = self::VERIFY_URL.'?'.http_build_query($params);
-        
+
         if (function_exists('curl_version'))
         {
             $curl = curl_init($url);
@@ -287,12 +287,12 @@ class reCAPTCHA
         {
             $response = file_get_contents($url);
         }
-    
+
         if (empty($response) || is_null($response))
         {
             return false;
         }
-    
+
         $json = json_decode($response);
 
         return $json->success;
