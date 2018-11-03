@@ -4,7 +4,7 @@
  *  @copyright 2008 - https://www.clicshopping.org
  *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
  *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4 
+ *  @licence MIT - Portion of osCommerce 2.4
  *
  *
  */
@@ -33,7 +33,7 @@
         $this->enabled = (MODULES_CREATE_ACCOUNT_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True');
       }
 
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False' || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT == 'False') {
+      if ((!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False') && (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO') || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO == 'False')) {
         $this->enabled = false;
       }
     }

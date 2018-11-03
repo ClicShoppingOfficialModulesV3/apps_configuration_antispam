@@ -68,7 +68,7 @@
           $error = $this->getResultGoogleRecaptch();
         }
 
-        if (CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'True' && $error === false) {
+        if (defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'True' && $error === false) {
           $error = $this->getResultHideFieldAntispam();
         }
 
