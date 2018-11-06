@@ -71,7 +71,7 @@
 
         if ($error === true) {
           $CLICSHOPPING_MessageStack->add(CLICSHOPPING::getDef('text_no_email_address_found'), 'error', 'password_forgotten');
-          CLICSHOPPING::redirect('index.php', 'Products&TellAFriend');
+          CLICSHOPPING::redirect('CLICSHOPPING::link(null, 'Products&TellAFriend');
         }
       }
     }

@@ -73,7 +73,7 @@
 
         if ($error === true) {
           $CLICSHOPPING_MessageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'error', 'newsletter_no_account');
-          CLICSHOPPING::redirect('index.php', 'Account&NewslettersNoAccount');
+          CLICSHOPPING::redirect('CLICSHOPPING::link(null, 'Account&NewslettersNoAccount');
         }
       }
     }

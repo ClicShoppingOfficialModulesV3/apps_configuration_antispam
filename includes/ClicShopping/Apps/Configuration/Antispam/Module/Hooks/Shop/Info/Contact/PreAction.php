@@ -74,7 +74,7 @@
 
         if ($error === true) {
           $CLICSHOPPING_MessageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'warning', 'contact');
-          CLICSHOPPING::redirect('index.php', 'Info&Contact');
+          CLICSHOPPING::redirect('CLICSHOPPING::link(null, 'Info&Contact');
         }
       }
     }
