@@ -72,7 +72,7 @@
 
         if ($error === true) {
           $CLICSHOPPING_MessageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'error', 'create_account_pro');
-          CLICSHOPPING::redirect('CLICSHOPPING::link(null, 'Account&CreateGuest');
+          CLICSHOPPING::redirect(null, 'Account&CreateGuest');
         }
       }
     }
