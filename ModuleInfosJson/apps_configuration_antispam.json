@@ -10,7 +10,7 @@
   "license":			"GPL 2 - MIT",
   "tag":			    "configuration, antispam, recaptcha",
   "install":            "includes/ClicShopping/Apps/Configuration/",
-  "module_directory":   "",
+  "module_directory":   "Configuration",
   "apps_name":          "Antispam",
   "type_module":      "Fixe",
   "dependance":       "",
