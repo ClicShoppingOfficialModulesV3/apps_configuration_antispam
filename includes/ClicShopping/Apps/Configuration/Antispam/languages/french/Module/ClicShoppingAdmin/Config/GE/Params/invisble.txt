@@ -1,0 +1,3 @@
+cfg_recaptcha_antispam_invisible_title = Antispam invisible
+cfg_recaptcha_antispam_invisible_description = Configuration qui créee un champ invisible pour refuser les bots
+<br /><strong>Option: Vous devez installer le module ou l'APP correspondante et activer les modules</strong>

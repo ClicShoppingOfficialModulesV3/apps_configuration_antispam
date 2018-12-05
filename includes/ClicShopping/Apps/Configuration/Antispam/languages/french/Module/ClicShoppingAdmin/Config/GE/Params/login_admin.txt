@@ -1,6 +1,3 @@
-cfg_recaptcha_antispam_login_admin_title = Connexion utilisateur
+cfg_recaptcha_antispam_login_admin_true = Connexion utilisateur
 cfg_recaptcha_antispam_login_admin_description = Sélectionnez True pour activer le module
  <br /><strong>Option: Vous devez installer le module ou l'APP correspondante et activer les modules</strong>
-
-cfg_recaptcha_antispam_login_admin_true = True
-cfg_recaptcha_antispam_login_admin_false = False
