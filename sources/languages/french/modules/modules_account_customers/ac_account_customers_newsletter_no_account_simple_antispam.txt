@@ -1,4 +1,4 @@
-account_customers_newsletter_no_account_simple_antispam_title = Souhaitez-vous activer le système antispam (numérique) ?
-account_customers_newsletter_no_account_simple_antispam_description = activer le système antispam (numérique)
+modules_account_customers_newsletter_no_account_simple_antispam_title = Souhaitez-vous activer le système antispam (numérique) ?
+modules_account_customers_newsletter_no_account_simple_antispam_description = activer le système antispam (numérique)
 
 entry_simple_antispam = Combien font :
