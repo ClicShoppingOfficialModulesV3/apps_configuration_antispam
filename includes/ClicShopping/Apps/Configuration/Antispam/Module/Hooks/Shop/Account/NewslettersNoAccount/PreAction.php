@@ -41,8 +41,9 @@
     private function getResultHideFieldAntispam() {
       $error = false;
       $antispam = HTML::sanitize($_POST['invisible_recaptcha']);
+      $antispam_clisopping = HTML::sanitize($_POST['invisible_clicshopping']);
 
-      if (!empty($antispam)) {
+      if (!empty($antispam) && !empty($antispam_clisopping)) {
         exit();
       }
 

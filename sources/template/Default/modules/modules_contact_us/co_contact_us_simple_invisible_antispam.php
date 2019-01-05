@@ -44,6 +44,7 @@
       if (isset($_GET['Info']) && isset($_GET['Contact']) && !isset($_GET['Success'])) {
         $contact_us_invisible_antispam = '<!--  contact_us_invisible_invisible_antispam start -->' . "\n";
         $contact_us_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'class="hiddenRecaptcha"');
+        $contact_us_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'class="hiddenRecaptcha"');
         $contact_us_invisible_antispam .= '<!-- contact_us_invisible_invisible_antispam end -->' . "\n";
 
         $CLICSHOPPING_Template->addBlock($contact_us_invisible_antispam, $this->group);

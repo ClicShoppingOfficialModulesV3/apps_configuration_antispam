@@ -44,6 +44,7 @@
       if (isset($_GET['Account']) &&  isset($_GET['NewslettersNoAccount'])) {
         $account_customers_newsletter_no_account_invisible_antispam = '<!--  account_customers_newsletter_no_account_invisible_invisible_antispam start -->' . "\n";
         $account_customers_newsletter_no_account_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'class="hiddenRecaptcha"');
+        $account_customers_newsletter_no_account_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'class="hiddenRecaptcha"');
         $account_customers_newsletter_no_account_invisible_antispam .= '<!-- account_customers_newsletter_no_account_invisible_invisible_antispam end -->' . "\n";
 
         $CLICSHOPPING_Template->addBlock($account_customers_newsletter_no_account_invisible_antispam, $this->group);
