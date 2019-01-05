@@ -1,2 +1,6 @@
-cfg_recaptcha_antispam_login_admin_true = Customer login
+cfg_recaptcha_antispam_login_admin_title = Customer login
 cfg_recaptcha_antispam_login_admin_description = Select True to activate the module
+ <br /><strong>Option: You must install the module or App and activate the template modules</strong>
+
+cfg_recaptcha_antispam_login_admin_true = True
+cfg_recaptcha_antispam_login_admin_false = False
