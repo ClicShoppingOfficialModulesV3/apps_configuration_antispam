@@ -108,6 +108,7 @@
               <?php echo $CLICSHOPPING_Antispam->getDef('dialog_uninstall_body'); ?>
             </div>
             <div class="modal-footer">
+              <?php echo HTML::button($CLICSHOPPING_Antispam->getDef('button_delete'), null, $CLICSHOPPING_Antispam->link('Configure&Delete&module=' . $current_module), 'danger'); ?>
               <?php echo HTML::button($CLICSHOPPING_Antispam->getDef('button_uninstall'), null, $CLICSHOPPING_Antispam->link('Configure&Uninstall&module=' . $current_module), 'danger'); ?>
               <?php echo HTML::button($CLICSHOPPING_Antispam->getDef('button_cancel'), null, '#', 'warning',  ['params' => 'data-dismiss="modal"']); ?>
             </div>

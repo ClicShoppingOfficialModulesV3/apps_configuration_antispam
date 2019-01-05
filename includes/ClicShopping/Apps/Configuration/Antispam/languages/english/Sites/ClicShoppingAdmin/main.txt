@@ -2,6 +2,7 @@ heading_title = Antispam
 module_am_title = Antispam
 module_am_short_title = Antispam
 
+title_menu = Antispam
 text_antispam = Antispam
 text_configure = Configure App Module
 

@@ -57,7 +57,7 @@
                            'app_code' => 'app_configuration_antispam'
         ];
 
-        $insert_sql_data = ['parent_id' => 13];
+        $insert_sql_data = ['parent_id' => 14];
 
         $sql_data_array = array_merge($sql_data_array, $insert_sql_data);
 
