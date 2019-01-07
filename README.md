@@ -30,6 +30,17 @@ option if you theses modules installed
 Anonymous newsletter
 Customer Guest Account
 
+All informations about the CliCshopping
 
+ Community : https://www.clicshopping.org
+
+ Software : https://github.com/ClicShopping
+
+ Official add on : https://github.com/ClicShoppingOfficialModulesV3
+
+ Community add on : https://github.com/ClicShoppingV3Community
+
+ trademark License info : https://www.clicshopping.org/forum/trademark/ 
+ 
 ![image](https://github.com/ClicShoppingOfficialModulesV3/apps_configuration_antispam/blob/master/ModuleInfosJson/image.png)
 ![antispam](https://github.com/ClicShoppingOfficialModulesV3/apps_configuration_antispam/blob/master/ModuleInfosJson/antispam_admin.png)
