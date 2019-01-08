@@ -30,7 +30,7 @@ option if you theses modules installed
 Anonymous newsletter
 Customer Guest Account
 
-All informations about the CliCshopping
+All informations about the ClicShopping
 
  Community : https://www.clicshopping.org
 
