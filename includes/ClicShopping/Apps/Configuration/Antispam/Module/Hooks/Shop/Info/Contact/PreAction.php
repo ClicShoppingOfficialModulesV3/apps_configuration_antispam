@@ -30,8 +30,7 @@
       $this->messageStack = Registry::get('MessageStack');
     }
 
-
-    private function getResultGoogleRecaptch() {
+    private function getResultGoogleRecaptcha() {
       $CLICSHOPPING_Hooks = Registry::get('Hooks');
 
       $error = $CLICSHOPPING_Hooks->call('AllShop', 'GoogleRecaptchaProcess');
@@ -41,6 +40,7 @@
 
     private function getResultHideFieldAntispam() {
       $error = false;
+
       $antispam = HTML::sanitize($_POST['invisible_recaptcha']);
       $antispam_clisopping = HTML::sanitize($_POST['invisible_clicshopping']);
 
@@ -52,8 +52,6 @@
     }
 
     public function execute() {
-      $CLICSHOPPING_MessageStack = Registry::get('MessageStack');
-
       if (!defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False') {
         return false;
       }
@@ -61,21 +59,26 @@
       if (isset($_GET['Info']) && isset($_GET['Contact']) && isset($_GET['Process'])) {
         $error = false;
 
-        if (defined('MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'True' && $error === false) {
-          $error = AntispamClass::getResultSimpleAntispam();
-        }
+        if (defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'True') {
 
-        if (defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') && CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'True' && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'True' && $error === false) {
-          $error = $this->getResultGoogleRecaptch();
-        }
+          if (defined('MODULES_CONTACT_US_SIMPLE_ANTISPAM_STATUS') && MODULES_CONTACT_US_SIMPLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') && CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'True') {
 
-        if (defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'True' && $error === false) {
-          $error = $this->getResultHideFieldAntispam();
-        }
+            $error = AntispamClass::getResultSimpleAntispam();
+          }
 
-        if ($error === true) {
-          $CLICSHOPPING_MessageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'warning', 'contact');
-          CLICSHOPPING::redirect(null, 'Info&Contact');
+          if (defined('MODULES_CONTACT_US_RECAPTCHA_STATUS') && MODULES_CONTACT_US_RECAPTCHA_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') &&  CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'True' && $error === false) {
+
+            $error = $this->getResultGoogleRecaptcha();
+          }
+
+          if (defined('MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && $error === false) {
+            $error = $this->getResultHideFieldAntispam();
+          }
+
+          if ($error === true) {
+            $this->messageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'warning', 'contact');
+            CLICSHOPPING::redirect(null, 'Info&Contact');
+          }
         }
       }
     }

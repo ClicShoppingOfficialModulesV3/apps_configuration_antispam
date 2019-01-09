@@ -27,6 +27,7 @@
       }
 
       $this->app = Registry::get('Antispam');
+      $this->messageStack = Registry::get('MessageStack');
     }
 
     private function getResultGoogleRecaptcha() {
@@ -39,6 +40,7 @@
 
     private function getResultHideFieldAntispam() {
       $error = false;
+
       $antispam = HTML::sanitize($_POST['invisible_recaptcha']);
       $antispam_clisopping = HTML::sanitize($_POST['invisible_clicshopping']);
 
@@ -50,30 +52,33 @@
     }
 
     public function execute() {
-      $CLICSHOPPING_MessageStack = Registry::get('MessageStack');
-
-      if ((!defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'False') && (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT') || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT== 'False')) {
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT') && CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT == 'False') {
         return false;
       }
 
       if (isset($_GET['Account']) && isset($_GET['Create']) && isset($_GET['Process'])) {
         $error = false;
 
-        if (defined('MODULES_CREATE_ACCOUNT_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_CREATE_ACCOUNT_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT') || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT== 'True') && $error === false) {
-          $error = AntispamClass::getResultSimpleAntispam();
-        }
+        if (defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT') && CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT == 'True') {
 
-        if (defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') && CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'True' && (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT') || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT== 'True') && $error === false) {
-          $error = $this->getResultGoogleRecaptcha();
-        }
+          if (defined('MODULES_CREATE_ACCOUNT_SIMPLE_ANTISPAM_STATUS') && MODULES_CREATE_ACCOUNT_SIMPLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') && CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'True') {
 
-        if (defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT') || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT == 'True') && $error === false) {
-          $error = $this->getResultHideFieldAntispam();
-        }
+            $error = AntispamClass::getResultSimpleAntispam();
+          }
 
-        if ($error === true) {
-          $CLICSHOPPING_MessageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'error', 'create_guest_account');
-          CLICSHOPPING::redirect(null, 'Account&Create');
+          if (defined('MODULES_CREATE_ACCOUNT_RECAPTCHA_STATUS') && MODULES_CREATE_ACCOUNT_RECAPTCHA_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') &&  CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'True' && $error === false) {
+
+            $error = $this->getResultGoogleRecaptcha();
+          }
+
+          if (defined('MODULES_CREATE_ACCOUNT_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_CREATE_ACCOUNT_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && $error === false) {
+            $error = $this->getResultHideFieldAntispam();
+          }
+
+          if ($error === true) {
+            $this->messageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'warning', 'contact');
+            CLICSHOPPING::redirect(null, 'Account&Create');
+          }
         }
       }
     }
