@@ -71,7 +71,7 @@
             $error = $this->getResultGoogleRecaptcha();
           }
 
-          if (defined('MODULES_CREATE_ACCOUNT_PRO'_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_CREATE_ACCOUNT_PRO'_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && $error === false) {
+          if (defined('MODULES_CREATE_ACCOUNT_PRO_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_CREATE_ACCOUNT_PRO_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && $error === false) {
             $error = $this->getResultHideFieldAntispam();
           }
 
