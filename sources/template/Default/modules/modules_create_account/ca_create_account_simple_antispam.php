@@ -48,7 +48,7 @@
         $create_account_antispam = '<!--  create_account_antispam start -->' . "\n";
 
         ob_start();
-        require($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/create_account_simple_antispam'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/create_account_simple_antispam'));
 
         $create_account_antispam .= ob_get_clean();
 

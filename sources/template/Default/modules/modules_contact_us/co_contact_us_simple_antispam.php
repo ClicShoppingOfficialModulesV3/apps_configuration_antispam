@@ -48,7 +48,7 @@
         $contact_us_antispam = '<!--  contact_us_antispam start -->' . "\n";
 
         ob_start();
-        require($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/contact_us_simple_antispam'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/contact_us_simple_antispam'));
 
         $contact_us_antispam .= ob_get_clean();
 

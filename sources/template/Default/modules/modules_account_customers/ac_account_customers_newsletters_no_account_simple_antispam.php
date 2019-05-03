@@ -48,7 +48,7 @@
         $account_customers_newsletter_no_account_antispam = '<!--  account_customers_newsletter_no_account_antispam start -->' . "\n";
 
         ob_start();
-        require($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/account_customers_newsletter_no_account_simple_antispam'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/account_customers_newsletter_no_account_simple_antispam'));
 
         $account_customers_newsletter_no_account_antispam .= ob_get_clean();
 

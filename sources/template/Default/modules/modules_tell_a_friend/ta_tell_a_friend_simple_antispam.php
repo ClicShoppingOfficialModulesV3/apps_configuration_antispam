@@ -48,7 +48,7 @@
         $tell_a_friend_antispam = '<!--  tell_a_friend_antispam start -->' . "\n";
 
         ob_start();
-        require($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/tell_a_friend_simple_antispam'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/tell_a_friend_simple_antispam'));
 
         $tell_a_friend_antispam .= ob_get_clean();
 

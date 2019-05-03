@@ -49,7 +49,7 @@
         $recaptcha = $CLICSHOPPING_Hooks->output('AllShop', 'GoogleRecaptchaDisplay', null, 'display');
 
         ob_start();
-        require($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/tell_a_friend_recaptcha'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/tell_a_friend_recaptcha'));
 
         $tell_a_friend_recaptcha .= ob_get_clean();
 

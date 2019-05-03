@@ -51,7 +51,7 @@
         $recaptcha = $CLICSHOPPING_Hooks->output('AllShop', 'GoogleRecaptchaDisplay', null, 'display');
 
         ob_start();
-        require($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/create_account_recaptcha'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/create_account_recaptcha'));
 
         $create_account_recaptcha .= ob_get_clean();
 

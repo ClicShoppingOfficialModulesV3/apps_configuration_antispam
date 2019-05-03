@@ -51,7 +51,7 @@
 
         ob_start();
 
-        require($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/account_customers_newsletter_no_account_recaptcha'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/account_customers_newsletter_no_account_recaptcha'));
 
         $account_customers_newsletter_no_account_recaptcha .= ob_get_clean();
 

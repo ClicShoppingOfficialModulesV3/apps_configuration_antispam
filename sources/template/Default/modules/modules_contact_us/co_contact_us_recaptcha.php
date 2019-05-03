@@ -51,7 +51,7 @@
         $recaptcha = $CLICSHOPPING_Hooks->output('AllShop', 'GoogleRecaptchaDisplay', null, 'display');
 
         ob_start();
-        require($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/contact_us_recaptcha'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/contact_us_recaptcha'));
 
         $contact_us_recaptcha .= ob_get_clean();
 
