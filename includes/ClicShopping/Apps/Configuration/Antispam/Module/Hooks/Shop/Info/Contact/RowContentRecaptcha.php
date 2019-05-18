@@ -36,8 +36,6 @@
         return false;
       }
 
-      $output = '';
-
       $content = '<div class="row col-md-12" id="RowContent12">';
       $content .= $CLICSHOPPING_Hooks->output('AllShop', 'GoogleRecaptchaDisplay');
       $content .= '</div>';
