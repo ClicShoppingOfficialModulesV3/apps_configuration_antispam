@@ -33,8 +33,8 @@
         $this->enabled = (MODULES_CONTACT_US_RECAPTCHA_STATUS == 'True');
       }
 
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') || CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'False' || CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False') {
-         $this->enabled = false;
+      if ((!defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') && CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'False') || (!defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False')) {
+        $this->enabled = false;
       }
     }
 

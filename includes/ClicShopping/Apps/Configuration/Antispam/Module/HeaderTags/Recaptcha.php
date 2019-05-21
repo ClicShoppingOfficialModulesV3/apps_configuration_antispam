@@ -1,13 +1,13 @@
 <?php
-/**
- *
- *  @copyright 2008 - https://www.clicshopping.org
- *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
- *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4
- *  @Info : https://www.clicshopping.org/forum/trademark/
- *
- */
+  /**
+   *
+   * @copyright 2008 - https://www.clicshopping.org
+   * @Brand : ClicShopping(Tm) at Inpi all right Reserved
+   * @Licence GPL 2 & MIT
+   * @licence MIT - Portion of osCommerce 2.4
+   * @Info : https://www.clicshopping.org/forum/trademark/
+   *
+   */
 
   namespace ClicShopping\Apps\Configuration\Antispam\Module\HeaderTags;
 
@@ -15,12 +15,14 @@
 
   use ClicShopping\Apps\Configuration\Antispam\Antispam as AntispamApp;
 
-  class Recaptcha extends \ClicShopping\OM\Modules\HeaderTagsAbstract {
+  class Recaptcha extends \ClicShopping\OM\Modules\HeaderTagsAbstract
+  {
     protected $lang;
     protected $app;
     protected $group;
 
-    protected function init() {
+    protected function init()
+    {
       if (!Registry::exists('Antispam')) {
         Registry::set('Antispam', new AntispamApp());
       }
@@ -39,28 +41,31 @@
       }
     }
 
-    public function isEnabled() {
+    public function isEnabled()
+    {
       return $this->enabled;
     }
 
-    public function getOutput() {
+    public function getOutput()
+    {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      $footer ='<!-- start Recaptha -->' . "\n";
-      $footer .='<script src="https://www.google.com/recaptcha/api.js" async defer></script>';
-      $footer .='<!-- End Recaptha -->' . "\n";
+      $footer = '<!-- start Recaptha -->' . "\n";
+      $footer .= '<script src="https://www.google.com/recaptcha/api.js" async defer></script>';
+      $footer .= '<!-- End Recaptha -->' . "\n";
 
       $content = $CLICSHOPPING_Template->addBlock($footer, 'footer_scripts');
 
-        $output =
-<<<EOD
+      $output =
+        <<<EOD
 {$content}
 EOD;
 
       return $output;
     }
 
-    public function install() {
+    public function install()
+    {
       $CLICSHOPPING_Db = Registry::get('Db');
 
       $CLICSHOPPING_Db->save('configuration', [
@@ -88,13 +93,15 @@ EOD;
       );
     }
 
-    public function remove() {
+    public function remove()
+    {
       return Registry::get('Db')->exec('delete from :table_configuration where configuration_key in ("' . implode('", "', $this->keys()) . '")');
     }
 
-    public function keys() {
+    public function keys()
+    {
       return ['MODULES_HEADER_TAGS_GOOGLE_RECAPTCHA_STATUS',
-              'MODULES_HEADER_TAGS_GOOGLE_RECAPTCHA_SORT_ORDER'
-            ];
+        'MODULES_HEADER_TAGS_GOOGLE_RECAPTCHA_SORT_ORDER'
+      ];
     }
   }

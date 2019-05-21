@@ -1,27 +1,27 @@
 <?php
-/**
- *
- *  @copyright 2008 - https://www.clicshopping.org
- *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
- *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4
- *  @Info : https://www.clicshopping.org/forum/trademark/
- *
- */
+  /**
+   *
+   * @copyright 2008 - https://www.clicshopping.org
+   * @Brand : ClicShopping(Tm) at Inpi all right Reserved
+   * @Licence GPL 2 & MIT
+   * @licence MIT - Portion of osCommerce 2.4
+   * @Info : https://www.clicshopping.org/forum/trademark/
+   *
+   */
 
   namespace ClicShopping\Apps\Configuration\Antispam\Classes;
 
   use ClicShopping\OM\CLICSHOPPING;
 
-/**
- * reCAPTCHA v3 class
- *
- * @author ShevAbam
- * @link https://github.com/shevabam/recaptcha
- * @license GNU GPL 2.0
- */
-class reCAPTCHA
-{
+  /**
+   * reCAPTCHA v3 class
+   *
+   * @author ShevAbam
+   * @link https://github.com/shevabam/recaptcha
+   * @license GNU GPL 2.0
+   */
+  class reCAPTCHA
+  {
     /**
      * ReCAPTCHA URL verifying
      *
@@ -99,7 +99,6 @@ class reCAPTCHA
     protected $size = null;
 
 
-
     /**
      * Initialize site and secret keys
      *
@@ -109,8 +108,8 @@ class reCAPTCHA
      */
     public function __construct($siteKey = null, $secretKey = null)
     {
-        $this->setSiteKey($siteKey);
-        $this->setSecretKey($secretKey);
+      $this->setSiteKey($siteKey);
+      $this->setSecretKey($secretKey);
     }
 
     /**
@@ -121,9 +120,9 @@ class reCAPTCHA
      */
     public function setSiteKey($key)
     {
-        $this->siteKey = $key;
+      $this->siteKey = $key;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -134,9 +133,9 @@ class reCAPTCHA
      */
     public function setSecretKey($key)
     {
-        $this->secretKey = $key;
+      $this->secretKey = $key;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -147,12 +146,12 @@ class reCAPTCHA
      */
     public function setRemoteIp($ip = null)
     {
-        if (!is_null($ip))
-            $this->remoteIp = $ip;
-        else
-            $this->remoteIp = $_SERVER['REMOTE_ADDR'];
+      if (!is_null($ip))
+        $this->remoteIp = $ip;
+      else
+        $this->remoteIp = $_SERVER['REMOTE_ADDR'];
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -163,52 +162,52 @@ class reCAPTCHA
      */
     public function setTheme($theme = 'light')
     {
-        if (in_array($theme, self::$themes))
-            $this->theme = $theme;
-        else
-            throw new \Exception('Theme "'.$theme.'"" is not supported. Available themes : '.join(', ', self::$themes));
+      if (in_array($theme, self::$themes))
+        $this->theme = $theme;
+      else
+        throw new \Exception('Theme "' . $theme . '"" is not supported. Available themes : ' . join(', ', self::$themes));
 
-        return $this;
+      return $this;
     }
 
     /**
      * Set type
      *
-     * @param  string $type (see https://developers.google.com/recaptcha/docs/display#config)
+     * @param string $type (see https://developers.google.com/recaptcha/docs/display#config)
      * @return object
      */
     public function setType($type = 'image')
     {
-        if (in_array($type, self::$types))
-            $this->type = $type;
+      if (in_array($type, self::$types))
+        $this->type = $type;
 
-        return $this;
+      return $this;
     }
 
     /**
      * Set language
      *
-     * @param  string $language (see https://developers.google.com/recaptcha/docs/language)
+     * @param string $language (see https://developers.google.com/recaptcha/docs/language)
      * @return object
      */
     public function setLanguage($language)
     {
-        $this->language = $language;
+      $this->language = $language;
 
-        return $this;
+      return $this;
     }
 
     /**
      * Set size
      *
-     * @param  string $size (see https://developers.google.com/recaptcha/docs/display#render_param)
+     * @param string $size (see https://developers.google.com/recaptcha/docs/display#render_param)
      * @return object
      */
     public function setSize($size)
     {
-        $this->size = $size;
+      $this->size = $size;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -218,11 +217,11 @@ class reCAPTCHA
      */
     public function getScript()
     {
-        $data = array();
-        if (!is_null($this->language))
-            $data = array('hl' => $this->language);
+      $data = array();
+      if (!is_null($this->language))
+        $data = array('hl' => $this->language);
 
-        return '<script src="https://www.google.com/recaptcha/api.js?'.http_build_query($data).'"></script>';
+      return '<script src="https://www.google.com/recaptcha/api.js?' . http_build_query($data) . '"></script>';
     }
 
     /**
@@ -232,21 +231,20 @@ class reCAPTCHA
      */
     public function getHtml()
     {
-        if (!empty($this->siteKey))
-        {
-            $data = 'data-sitekey="'.$this->siteKey.'"';
+      if (!empty($this->siteKey)) {
+        $data = 'data-sitekey="' . $this->siteKey . '"';
 
-            if (!is_null($this->theme))
-                $data .= ' data-theme="'.$this->theme.'"';
+        if (!is_null($this->theme))
+          $data .= ' data-theme="' . $this->theme . '"';
 
-            if (!is_null($this->type))
-                $data .= ' data-type="'.$this->type.'"';
+        if (!is_null($this->type))
+          $data .= ' data-type="' . $this->type . '"';
 
-            if (!is_null($this->size))
-                $data .= ' data-size="'.$this->size.'"';
+        if (!is_null($this->size))
+          $data .= ' data-size="' . $this->size . '"';
 
-            return '<div class="g-recaptcha" '.$data.'></div>';
-        }
+        return '<div class="g-recaptcha" ' . $data . '></div>';
+      }
     }
 
     /**
@@ -257,44 +255,40 @@ class reCAPTCHA
      */
     public function isValid($response)
     {
-        if (is_null($this->secretKey))
-            throw new \Exception('You must set your secret key');
+      if (is_null($this->secretKey))
+        throw new \Exception('You must set your secret key');
 
-        if (empty($response))
-            return false;
+      if (empty($response))
+        return false;
 
-        $params = array(
-            'secret'    => $this->secretKey,
-            'response'  => $response,
-            'remoteip'  => $this->remoteIp,
-        );
+      $params = array(
+        'secret' => $this->secretKey,
+        'response' => $response,
+        'remoteip' => $this->remoteIp,
+      );
 
-        $url = self::VERIFY_URL.'?'.http_build_query($params);
+      $url = self::VERIFY_URL . '?' . http_build_query($params);
 
-        if (function_exists('curl_version'))
-        {
-            $curl = curl_init($url);
-            curl_setopt($curl, CURLOPT_HEADER, false);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-            curl_setopt($curl, CURLOPT_CAINFO, CLICSHOPPING::getConfig('dir_root', 'Shop') . 'inludes/cacert.pem');
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+      if (function_exists('curl_version')) {
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+        curl_setopt($curl, CURLOPT_CAINFO, CLICSHOPPING::getConfig('dir_root', 'Shop') . 'inludes/cacert.pem');
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
 
-            $response = curl_exec($curl);
-        }
-        else
-        {
-            $response = file_get_contents($url);
-        }
+        $response = curl_exec($curl);
+      } else {
+        $response = file_get_contents($url);
+      }
 
-        if (empty($response) || is_null($response))
-        {
-            return false;
-        }
+      if (empty($response) || is_null($response)) {
+        return false;
+      }
 
-        $json = json_decode($response);
+      $json = json_decode($response);
 
-        return $json->success;
+      return $json->success;
     }
-}
+  }
