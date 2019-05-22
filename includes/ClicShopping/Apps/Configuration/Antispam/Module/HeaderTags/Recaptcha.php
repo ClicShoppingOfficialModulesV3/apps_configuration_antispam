@@ -57,7 +57,7 @@
       $content = $CLICSHOPPING_Template->addBlock($footer, 'footer_scripts');
 
       $output =
-        <<<EOD
+<<<EOD
 {$content}
 EOD;
 

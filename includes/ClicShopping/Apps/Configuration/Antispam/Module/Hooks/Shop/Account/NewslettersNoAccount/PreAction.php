@@ -46,9 +46,9 @@
       $error = false;
 
       $antispam = HTML::sanitize($_POST['invisible_recaptcha']);
-      $antispam_clisopping = HTML::sanitize($_POST['invisible_clicshopping']);
+      $antispam_clicshopping = HTML::sanitize($_POST['invisible_clicshopping']);
 
-      if (!empty($antispam) && !empty($antispam_clisopping)) {
+      if (!empty($antispam) && !empty($antispam_clicshopping)) {
         exit();
       }
 
@@ -62,9 +62,11 @@
       }
 
       if (isset($_GET['Account']) && isset($_GET['NewslettersNoAccount']) && isset($_GET['Process'])) {
-        $error = false;
-
         if (defined('CLICSHOPPING_APP_ANTISPAM_NEWSLETTER_NO_ACCOUNT') && CLICSHOPPING_APP_ANTISPAM_NEWSLETTER_NO_ACCOUNT == 'True') {
+          $error = false;
+          $error_simple = false;
+          $error_invisible = false;
+          $error_recaptcha = false;
 
           if (defined('MODULES_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS') && MODULES_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') && CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'True') {
             $error_simple = AntispamClass::getResultSimpleAntispam();
