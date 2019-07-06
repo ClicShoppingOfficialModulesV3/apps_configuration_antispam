@@ -1,0 +1,3 @@
+module_ge_title = General
+module_ge_short_title = General
+module_ge_public_title = General

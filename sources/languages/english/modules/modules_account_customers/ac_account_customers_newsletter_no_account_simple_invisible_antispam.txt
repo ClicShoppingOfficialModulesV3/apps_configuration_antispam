@@ -1,0 +1,2 @@
+account_customers_newsletter_no_account_simple_invisible_antispam_title = Do you want display a hide antispam (trap)?
+account_customers_newsletter_no_account_simple_invisible_antispam_description = Display a hidec_antispam

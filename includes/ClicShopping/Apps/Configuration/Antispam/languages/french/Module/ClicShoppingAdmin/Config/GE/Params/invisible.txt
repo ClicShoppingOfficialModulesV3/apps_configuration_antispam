@@ -1,0 +1,7 @@
+cfg_recaptcha_antispam_invisible_title = Invisible recaptcha
+cfg_recaptcha_antispam_invisible_description = Cette configuration vous permet de créer un champs invisibler afin d'attraper les robots de spam
+
+cfg_recaptcha_antispam_invisible_true = True
+cfg_recaptcha_antispam_invisible_false = False
+
+
