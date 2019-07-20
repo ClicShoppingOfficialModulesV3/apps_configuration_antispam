@@ -1,7 +1,8 @@
 # apps_configuration_antispam
 
 
-This apps allow you to implement for different form an antispam like invisible, numeric ou google recaptcha
+This apps allow you to implement for different antispam
+For just the invisible antispam is implemented.
 
 Invisile captcha allow you to include an invisible field inside your form
 Numéreric recaptcha allow you to include a field a random number
