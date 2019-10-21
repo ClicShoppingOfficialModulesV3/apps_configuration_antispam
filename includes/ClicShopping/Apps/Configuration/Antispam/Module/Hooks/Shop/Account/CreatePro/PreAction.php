@@ -57,7 +57,7 @@
 
     public function execute()
     {
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO') && CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO == 'False') {
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO') || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO == 'False') {
         return false;
       }
 

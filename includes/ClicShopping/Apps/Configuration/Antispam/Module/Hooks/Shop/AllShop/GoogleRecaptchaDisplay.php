@@ -35,7 +35,7 @@
       $output = '';
 
       if (defined('CLICSHOPPING_APP_ANTISPAM_RE_PUBLIC_KEY')) {
-        if (!empty(CLICSHOPPING_APP_ANTISPAM_RE_PUBLIC_KEY) && CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'True') {
+        if (!empty(CLICSHOPPING_APP_ANTISPAM_RE_PUBLIC_KEY) && defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') && CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'True') {
 
           Registry::set('reCAPTCHA', new reCAPTCHA());
           $reCAPTCHA = Registry::get('reCAPTCHA');

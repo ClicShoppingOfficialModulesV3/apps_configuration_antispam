@@ -46,15 +46,14 @@
 
           $reCAPTCHA->setSecretKey(CLICSHOPPING_APP_ANTISPAM_RE_PRIVATE_KEY);
 
-
           if ($reCAPTCHA->isValid($_POST['g-recaptcha-response'])) {
             $error = 'false';
           } else {
             $error = 'true';
           }
         }
-      }
 
-      return $error;
+        return $error;
+      }
     }
   }

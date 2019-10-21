@@ -57,7 +57,7 @@
 
     public function execute()
     {
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST') && CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST == 'False') {
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST') || CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST == 'False') {
         return false;
       }
 

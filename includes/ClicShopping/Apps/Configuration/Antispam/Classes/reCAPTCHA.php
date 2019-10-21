@@ -14,7 +14,7 @@
   use ClicShopping\OM\CLICSHOPPING;
 
   /**
-   * reCAPTCHA v3 class
+   * reCAPTCHA v2 class
    *
    * @author ShevAbam
    * @link https://github.com/shevabam/recaptcha
@@ -91,12 +91,26 @@
     protected $language = null;
 
     /**
+     * CURL timeout (in seconds) to verify response
+     *
+     * @var int
+     */
+    private $verifyTimeout = 1;
+
+    /**
      * Captcha size. Default : normal
      *
      * @var string
      * @see https://developers.google.com/recaptcha/docs/display#render_param
      */
     protected $size = null;
+
+    /**
+     * List of errors
+     *
+     * @var array
+     */
+    protected $errorCodes = array();
 
 
     /**
@@ -108,8 +122,8 @@
      */
     public function __construct($siteKey = null, $secretKey = null)
     {
-      $this->setSiteKey($siteKey);
-      $this->setSecretKey($secretKey);
+        $this->setSiteKey($siteKey);
+        $this->setSecretKey($secretKey);
     }
 
     /**
@@ -120,9 +134,9 @@
      */
     public function setSiteKey($key)
     {
-      $this->siteKey = $key;
+        $this->siteKey = $key;
 
-      return $this;
+        return $this;
     }
 
     /**
@@ -133,9 +147,9 @@
      */
     public function setSecretKey($key)
     {
-      $this->secretKey = $key;
+        $this->secretKey = $key;
 
-      return $this;
+        return $this;
     }
 
     /**
@@ -146,12 +160,12 @@
      */
     public function setRemoteIp($ip = null)
     {
-      if (!is_null($ip))
-        $this->remoteIp = $ip;
-      else
-        $this->remoteIp = $_SERVER['REMOTE_ADDR'];
+        if (!is_null($ip))
+            $this->remoteIp = $ip;
+        else
+            $this->remoteIp = $_SERVER['REMOTE_ADDR'];
 
-      return $this;
+        return $this;
     }
 
     /**
@@ -162,52 +176,65 @@
      */
     public function setTheme($theme = 'light')
     {
-      if (in_array($theme, self::$themes))
-        $this->theme = $theme;
-      else
-        throw new \Exception('Theme "' . $theme . '"" is not supported. Available themes : ' . join(', ', self::$themes));
+        if (in_array($theme, self::$themes))
+            $this->theme = $theme;
+        else
+            throw new \Exception('Theme "'.$theme.'"" is not supported. Available themes : '.join(', ', self::$themes));
 
-      return $this;
+        return $this;
     }
 
     /**
      * Set type
      *
-     * @param string $type (see https://developers.google.com/recaptcha/docs/display#config)
+     * @param  string $type (see https://developers.google.com/recaptcha/docs/display#config)
      * @return object
      */
     public function setType($type = 'image')
     {
-      if (in_array($type, self::$types))
-        $this->type = $type;
+        if (in_array($type, self::$types))
+            $this->type = $type;
 
-      return $this;
+        return $this;
     }
 
     /**
      * Set language
      *
-     * @param string $language (see https://developers.google.com/recaptcha/docs/language)
+     * @param  string $language (see https://developers.google.com/recaptcha/docs/language)
      * @return object
      */
     public function setLanguage($language)
     {
-      $this->language = $language;
+        $this->language = $language;
 
-      return $this;
+        return $this;
+    }
+
+    /**
+     * Set timeout
+     *
+     * @param  int $timeout
+     * @return object
+     */
+    public function setVerifyTimeout($timeout)
+    {
+        $this->verifyTimeout = $timeout;
+
+        return $this;
     }
 
     /**
      * Set size
      *
-     * @param string $size (see https://developers.google.com/recaptcha/docs/display#render_param)
+     * @param  string $size (see https://developers.google.com/recaptcha/docs/display#render_param)
      * @return object
      */
     public function setSize($size)
     {
-      $this->size = $size;
+        $this->size = $size;
 
-      return $this;
+        return $this;
     }
 
     /**
@@ -217,11 +244,11 @@
      */
     public function getScript()
     {
-      $data = array();
-      if (!is_null($this->language))
-        $data = array('hl' => $this->language);
+        $data = array();
+        if (!is_null($this->language))
+            $data = array('hl' => $this->language);
 
-      return '<script src="https://www.google.com/recaptcha/api.js?' . http_build_query($data) . '"></script>';
+        return '<script src="https://www.google.com/recaptcha/api.js?'.http_build_query($data).'"></script>';
     }
 
     /**
@@ -231,20 +258,21 @@
      */
     public function getHtml()
     {
-      if (!empty($this->siteKey)) {
-        $data = 'data-sitekey="' . $this->siteKey . '"';
+        if (!empty($this->siteKey))
+        {
+            $data = 'data-sitekey="'.$this->siteKey.'"';
 
-        if (!is_null($this->theme))
-          $data .= ' data-theme="' . $this->theme . '"';
+            if (!is_null($this->theme))
+                $data .= ' data-theme="'.$this->theme.'"';
 
-        if (!is_null($this->type))
-          $data .= ' data-type="' . $this->type . '"';
+            if (!is_null($this->type))
+                $data .= ' data-type="'.$this->type.'"';
 
-        if (!is_null($this->size))
-          $data .= ' data-size="' . $this->size . '"';
+            if (!is_null($this->size))
+                $data .= ' data-size="'.$this->size.'"';
 
-        return '<div class="g-recaptcha" ' . $data . '></div>';
-      }
+            return '<div class="g-recaptcha" '.$data.'></div>';
+        }
     }
 
     /**
@@ -255,40 +283,126 @@
      */
     public function isValid($response)
     {
-      if (is_null($this->secretKey))
-        throw new \Exception('You must set your secret key');
+        if (is_null($this->secretKey))
+            throw new \Exception('You must set your secret key');
 
-      if (empty($response))
-        return false;
+        if (empty($response)) {
 
-      $params = array(
-        'secret' => $this->secretKey,
-        'response' => $response,
-        'remoteip' => $this->remoteIp,
-      );
+            $this->errorCodes = array('internal-empty-response');
 
-      $url = self::VERIFY_URL . '?' . http_build_query($params);
+            return false;
+        }
 
-      if (function_exists('curl_version')) {
-        $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-        curl_setopt($curl, CURLOPT_CAINFO, CLICSHOPPING::getConfig('dir_root', 'Shop') . 'inludes/cacert.pem');
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+        $params = array(
+            'secret'   => $this->secretKey,
+            'response' => $response,
+            'remoteip' => $this->remoteIp,
+        );
 
-        $response = curl_exec($curl);
-      } else {
-        $response = file_get_contents($url);
-      }
+        $url = self::VERIFY_URL.'?'.http_build_query($params);
 
-      if (empty($response) || is_null($response)) {
-        return false;
-      }
+        if (function_exists('curl_version'))
+        {
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_HEADER, false);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_TIMEOUT, $this->verifyTimeout);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            $response = curl_exec($curl);
+        }
+        else
+        {
+            $response = file_get_contents($url);
+        }
 
-      $json = json_decode($response);
+        if (empty($response) || is_null($response) || !$response)
+        {
+            return false;
+        }
 
-      return $json->success;
+        $json = json_decode($response, true);
+
+        if (isset($json['error-codes']))
+        {
+            $this->errorCodes = $json['error-codes'];
+        }
+
+        return $json['success'];
     }
-  }
+
+    /**
+     * Returns the errors encountered
+     *
+     * @return array Errors code and name
+     */
+    public function getErrorCodes()
+    {
+        $errors = array();
+
+        if (count($this->errorCodes) > 0)
+        {
+            foreach ($this->errorCodes as $error)
+            {
+                switch ($error)
+                {
+                    case 'timeout-or-duplicate':
+                        $errors[] = array(
+                            'code' => $error,
+                            'name' => 'Timeout or duplicate.',
+                        );
+                    break;
+
+                    case 'missing-input-secret':
+                        $errors[] = array(
+                            'code' => $error,
+                            'name' => 'The secret parameter is missing.',
+                        );
+                    break;
+
+                    case 'invalid-input-secret':
+                        $errors[] = array(
+                            'code' => $error,
+                            'name' => 'The secret parameter is invalid or malformed.',
+                        );
+                    break;
+
+                    case 'missing-input-response':
+                        $errors[] = array(
+                            'code' => $error,
+                            'name' => 'The response parameter is missing.',
+                        );
+                    break;
+
+                    case 'invalid-input-response':
+                        $errors[] = array(
+                            'code' => $error,
+                            'name' => 'The response parameter is invalid or malformed.',
+                        );
+                    break;
+
+                    case 'bad-request':
+                        $errors[] = array(
+                            'code' => $error,
+                            'name' => 'The request is invalid or malformed.',
+                        );
+                    break;
+
+                    case 'internal-empty-response':
+                        $errors[] = array(
+                            'code' => $error,
+                            'name' => 'The recaptcha response is required.',
+                        );
+                    break;
+
+                    default:
+                        $errors[] = array(
+                            'code' => $error,
+                            'name' => $error,
+                        );
+                }
+            }
+        }
+
+        return $errors;
+    }
+}
