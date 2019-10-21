@@ -1,0 +1,3 @@
+modules_create_account_pro_recaptcha_title = Souhaitez afficher un captcha à l'intérieur du formulaire ?
+modules_create_account_pro_recaptcha_description = Afficher un captcha à l'intérieur du formulaire
+

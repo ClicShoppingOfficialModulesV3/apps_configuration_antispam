@@ -32,6 +32,15 @@
       $this->messageStack = Registry::get('MessageStack');
     }
 
+    private function getResultGoogleRecaptcha()
+    {
+      $CLICSHOPPING_Hooks = Registry::get('Hooks');
+
+      $error = $CLICSHOPPING_Hooks->call('AllShop', 'GoogleRecaptchaProcess');
+
+      return $error;
+    }
+
     private function getResultHideFieldAntispam()
     {
       $error = false;
@@ -48,16 +57,31 @@
 
     public function execute()
     {
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST') || CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST == 'False') {
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST') && CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST == 'False') {
         return false;
       }
 
       if (isset($_GET['Account']) && isset($_GET['CreateGuestAccount']) && isset($_GET['Process'])) {
         if (defined('CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST') && CLICSHOPPING_APP_ANTISPAM_CREATE_GUEST == 'True') {
           $error = false;
+          $error_simple = false;
+          $error_invisible = false;
+          $error_recaptcha = false;
+
+          if (defined('MODULES_CREATE_GUEST_SIMPLE_ANTISPAM_STATUS') && MODULES_CREATE_GUEST_SIMPLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') && CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'True') {
+            $error_simple = AntispamClass::getResultSimpleAntispam();
+          }
+
+          if (defined('MODULES_CREATE_GUEST_RECAPTCHA_STATUS') && MODULES_CREATE_GUEST_RECAPTCHA_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') && CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'True' && $error === false) {
+            $error_recaptcha = $this->getResultGoogleRecaptcha();
+          }
 
           if (defined('MODULES_CREATE_GUEST_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_CREATE_GUEST_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && $error === false) {
-            $error = $this->getResultHideFieldAntispam();
+            $error_invisible = $this->getResultHideFieldAntispam();
+          }
+
+          if ($error_simple === true || $error_recaptcha[0] || $error_invisible === true) {
+            $error = true;
           }
 
           if ($error === true) {

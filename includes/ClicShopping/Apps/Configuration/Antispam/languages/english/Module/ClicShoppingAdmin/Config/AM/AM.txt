@@ -1,0 +1,3 @@
+module_am_title = Simple Antispam
+module_am_short_title = Simple Antispam
+module_am_public_title = Simple Antispam
