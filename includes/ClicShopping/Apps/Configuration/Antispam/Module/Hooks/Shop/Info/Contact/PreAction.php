@@ -32,15 +32,6 @@
       $this->messageStack = Registry::get('MessageStack');
     }
 
-    private function getResultGoogleRecaptcha()
-    {
-      $CLICSHOPPING_Hooks = Registry::get('Hooks');
-
-      $error = $CLICSHOPPING_Hooks->call('AllShop', 'GoogleRecaptchaProcess');
-
-      return $error;
-    }
-
     private function getResultHideFieldAntispam()
     {
       $error = false;
@@ -64,24 +55,9 @@
       if (isset($_GET['Info']) && isset($_GET['Contact']) && isset($_GET['Process'])) {
         if (defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'True') {
           $error = false;
-          $error_simple = false;
-          $error_invisible = false;
-          $error_recaptcha = false;
-
-          if (defined('MODULES_CONTACT_US_SIMPLE_ANTISPAM_STATUS') && MODULES_CONTACT_US_SIMPLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') && CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'True') {
-            $error_simple = AntispamClass::getResultSimpleAntispam();
-          }
-
-          if (defined('MODULES_CONTACT_US_RECAPTCHA_STATUS') && MODULES_CONTACT_US_RECAPTCHA_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS') && CLICSHOPPING_APP_ANTISPAM_RE_RECAPTCHA_STATUS == 'True' && $error === false) {
-            $error_recaptcha = $this->getResultGoogleRecaptcha();
-          }
 
           if (defined('MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && $error === false) {
-            $error_invisible = $this->getResultHideFieldAntispam();
-          }
-
-          if ($error_simple === true || $error_recaptcha[0] || $error_invisible === true) {
-            $error = true;
+            $error = $this->getResultHideFieldAntispam();
           }
 
           if ($error === true) {
