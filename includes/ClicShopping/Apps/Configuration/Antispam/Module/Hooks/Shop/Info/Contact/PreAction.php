@@ -48,7 +48,7 @@
 
     public function execute()
     {
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False') {
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') || CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False') {
         return false;
       }
 

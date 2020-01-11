@@ -48,7 +48,7 @@
 
     public function execute()
     {
-      if ((!defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'False') && CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND == 'False') {
+      if ((!defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'False') || CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND == 'False') {
         return false;
       }
 
