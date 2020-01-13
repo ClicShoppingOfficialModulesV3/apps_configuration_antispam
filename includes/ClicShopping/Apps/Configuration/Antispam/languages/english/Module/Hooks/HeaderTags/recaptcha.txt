@@ -1,2 +1,0 @@
-module_header_tags_recaptcha_title = Do  you want use Google recaptcha meta tag ?
-module_header_tags_recaptcha_description = Add the meta tag balise to use Google recaptcha

@@ -13,7 +13,7 @@
   use ClicShopping\OM\CLICSHOPPING;
   use ClicShopping\Apps\Configuration\Antispam\Classes\AntispamClass;
 
-  class ac_account_customers_newsletters_no_account_simple_antispam {
+  class co_contact_us_numeric_antispam {
     public $code;
     public $group;
     public $title;
@@ -25,38 +25,37 @@
       $this->code = get_class($this);
       $this->group = basename(__DIR__);
 
-      $this->title = CLICSHOPPING::getDef('modules_account_customers_newsletter_no_account_simple_antispam_title');
-      $this->description = CLICSHOPPING::getDef('modules_account_customers_newsletter_no_account_simple_antispam_description');
+      $this->title = CLICSHOPPING::getDef('modules_contact_us_numeric_antispam_title');
+      $this->description = CLICSHOPPING::getDef('modules_contact_us_numeric_antispam_description');
 
-      if ( defined('MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS') ) {
-        $this->sort_order = (int)MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_SORT_ORDER;
-        $this->enabled = (MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS == 'True');
+      if ( defined('MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS') ) {
+        $this->sort_order = (int)MODULES_CONTACT_US_NUMERIC_ANTISPAM_SORT_ORDER;
+        $this->enabled = (MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS == 'True');
       }
 
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'False' || CLICSHOPPING_APP_ANTISPAM_NEWSLETTER_NO_ACCOUNT == 'False') {
-         $this->enabled = false;
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS == 'False' || !defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') || CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False') {
+        $this->enabled = false;
       }
     }
 
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Account']) &&  isset($_GET['NewslettersNoAccount'])) {
-        $content_width = (int)MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_CONTENT_WIDTH;
+      if (isset($_GET['Info']) && isset($_GET['Contact']) && !isset($_GET['Success'])) {
+        $content_width = (int)MODULES_CONTACT_US_NUMERIC_ANTISPAM_CONTENT_WIDTH;
 
         $antispam = AntispamClass::getConfirmationSimpleAntiSpam();
-        $account_customers_newsletter_no_account_antispam = '<!--  account_customers_newsletter_no_account_antispam start -->' . "\n";
+        $contact_us_antispam = '<!--  contact_us_antispam start -->' . "\n";
 
         ob_start();
-        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/account_customers_newsletter_no_account_simple_antispam'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/contact_us_numeric_antispam'));
 
-        $account_customers_newsletter_no_account_antispam .= ob_get_clean();
+        $contact_us_antispam .= ob_get_clean();
 
-        $account_customers_newsletter_no_account_antispam .= '<!-- account_customers_newsletter_no_account_antispam end -->' . "\n";
+        $contact_us_antispam .= '<!-- contact_us_antispam end -->' . "\n";
 
-        $CLICSHOPPING_Template->addBlock($account_customers_newsletter_no_account_antispam, $this->group);
+        $CLICSHOPPING_Template->addBlock($contact_us_antispam, $this->group);
       }
-
     }
 
     public function isEnabled() {
@@ -64,7 +63,7 @@
     }
 
     public function check() {
-      return defined('MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS');
+      return defined('MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS');
     }
 
     public function install() {
@@ -73,7 +72,7 @@
 
       $CLICSHOPPING_Db->save('configuration', [
           'configuration_title' => 'Do you want to enable this module ?',
-          'configuration_key' => 'MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS',
+          'configuration_key' => 'MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS',
           'configuration_value' => 'True',
           'configuration_description' => 'Do you want to enable this module in your shop ?',
           'configuration_group_id' => '6',
@@ -85,7 +84,7 @@
 
       $CLICSHOPPING_Db->save('configuration', [
           'configuration_title' => 'Please select the width of the module',
-          'configuration_key' => 'MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_CONTENT_WIDTH',
+          'configuration_key' => 'MODULES_CONTACT_US_NUMERIC_ANTISPAM_CONTENT_WIDTH',
           'configuration_value' => '12',
           'configuration_description' => 'Select a number between 1 and 12',
           'configuration_group_id' => '6',
@@ -98,7 +97,7 @@
 
       $CLICSHOPPING_Db->save('configuration', [
           'configuration_title' => 'Sort order',
-          'configuration_key' => 'MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_SORT_ORDER',
+          'configuration_key' => 'MODULES_CONTACT_US_NUMERIC_ANTISPAM_SORT_ORDER',
           'configuration_value' => '370',
           'configuration_description' => 'Sort order of display. Lowest is displayed first. The sort order must be different on every module',
           'configuration_group_id' => '6',
@@ -114,9 +113,9 @@
     }
 
     public function keys() {
-      return ['MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS',
-              'MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_CONTENT_WIDTH',
-              'MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_SORT_ORDER'
-             ];
+      return ['MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS',
+              'MODULES_CONTACT_US_NUMERIC_ANTISPAM_CONTENT_WIDTH',
+              'MODULES_CONTACT_US_NUMERIC_ANTISPAM_SORT_ORDER'
+              ];
     }
   }

@@ -48,20 +48,34 @@
 
     public function execute()
     {
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO') || CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO == 'False') {
+      if (!defined('MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS') || MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'False') {
         return false;
       }
 
       if (isset($_GET['Account']) && isset($_GET['CreatePro']) && isset($_GET['Process'])) {
         if (defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO') && CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO == 'True') {
           $error = false;
+          $error_numeric = false;
+          $error_invisible = false;
+//
+// Numeric
+//
+          if (defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') && CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS == 'True') {
+            $error_numeric = AntispamClass::getResultSimpleAntispam();
+          }
+//
+// Hiddenf fields
+//
+          if (defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True') {
+            $error_invisible = $this->getResultHideFieldAntispam();
+          }
 
-          if (defined('MODULES_CREATE_ACCOUNT_PRO_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_CREATE_ACCOUNT_PRO_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && $error === false) {
-            $error = $this->getResultHideFieldAntispam();
+          if ($error_numeric === true || $error_invisible === true) {
+            $error = true;
           }
 
           if ($error === true) {
-            $this->messageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'warning', 'contact');
+            $this->messageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'error', 'createpro');
             CLICSHOPPING::redirect(null, 'Account&CreatePro');
           }
         }

@@ -48,20 +48,34 @@
 
     public function execute()
     {
-      if ((!defined('CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_SIMPLE_STATUS == 'False') || CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND == 'False') {
+      if (!defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS == 'False') {
         return false;
       }
 
       if (isset($_GET['Products']) && isset($_GET['TellAFriend']) && isset($_GET['Process'])) {
         if (defined('CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND') && CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND == 'True') {
           $error = false;
+          $error_numeric = false;
+          $error_invisible = false;
+//
+// Numeric
+//
+          if (defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') && CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS == 'True') {
+            $error_numeric = AntispamClass::getResultSimpleAntispam();
+          }
+//
+// Hiddenf fields
+//
+          if (defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True') {
+            $error_invisible = $this->getResultHideFieldAntispam();
+          }
 
-          if (defined('MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_STATUS') && MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True' && defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True' && $error === false) {
-            $error = $this->getResultHideFieldAntispam();
+          if ($error_numeric === true || $error_invisible === true) {
+            $error = true;
           }
 
           if ($error === true) {
-            $this->messageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'warning', 'contact');
+            $this->messageStack->add(CLICSHOPPING::getDef('text_error_antispam'), 'error', 'friend');
             CLICSHOPPING::redirect(null, 'Products&TellAFriend');
           }
         }

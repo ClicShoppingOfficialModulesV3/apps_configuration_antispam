@@ -1,3 +1,0 @@
-cfg_recaptcha_antispam_recaptcha_public_key_title = Google Recaptcha public key
-cfg_recaptcha_antispam_recaptcha_public_key_description = To get this key, you must have an account on : https://www.google.com/recaptcha/<br />
-Do not forget to activate the recaptcha in hte configuration / SEO / Meta modules

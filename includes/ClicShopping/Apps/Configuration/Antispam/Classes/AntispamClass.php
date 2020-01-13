@@ -21,7 +21,7 @@
      * public function
      * @return string $antispam sentence
      */
-    public static function getConfirmationSimpleAntiSpam()
+    public static function getConfirmationSimpleAntiSpam(): string
     {
       $random_number = rand(1, 20);
 
@@ -37,7 +37,7 @@
      * @param string $antispan_confirmation
      * @return bool
      */
-    private static function getValidateSimpleAntispam($antispan_confirmation)
+    private static function getValidateSimpleAntispam($antispan_confirmation): bool
     {
       if ($antispan_confirmation === $_SESSION['createResponseAntiSpam']) {
         $valid_antispan_confirmation = false;
@@ -54,7 +54,7 @@
      *
      * @return bool
      */
-    public static function getResultSimpleAntispam()
+    public static function getResultSimpleAntispam(): bool
     {
       $error = false;
 

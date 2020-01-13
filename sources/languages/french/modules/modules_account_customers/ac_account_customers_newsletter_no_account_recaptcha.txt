@@ -1,3 +1,0 @@
-modules_account_customers_newsletter_no_account_recaptcha_title = Souhaitez afficher un captcha à l'intérieur du formulaire ?
-modules_account_customers_newsletter_no_account_recaptcha_description = Afficher un captcha à l'intérieur du formulaire
-

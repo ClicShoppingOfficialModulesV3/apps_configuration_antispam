@@ -1,2 +1,0 @@
-modules_contact_us_recaptcha_title = Do you want display a the google recaptcha ?
-modules_contact_us_recaptcha_description = Display a the google recaptcha

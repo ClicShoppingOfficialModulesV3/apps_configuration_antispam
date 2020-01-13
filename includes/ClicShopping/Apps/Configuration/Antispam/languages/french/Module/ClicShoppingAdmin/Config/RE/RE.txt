@@ -1,3 +1,0 @@
-module_re_title = Google Recaptcha
-module_re_short_title = Google Recaptcha
-module_re_public_title = Google Recaptcha

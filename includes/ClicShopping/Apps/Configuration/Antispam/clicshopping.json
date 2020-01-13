@@ -21,6 +21,9 @@
    "Shop/Contact": {
     "PreAction":	"Module\\Hooks\\Shop\\Info\\Contact\\PreAction"
    },
+   "Shop/TellAFriend": {
+    "PreAction":	"Module\\Hooks\\Shop\\Products\\TellAFriend\\PreAction"
+   },
    "Shop/Create": {
     "PreAction":	"Module\\Hooks\\Shop\\Account\\Create\\PreAction"
    },
@@ -32,9 +35,6 @@
    },
    "Shop/NewslettersNoAccount": {
     "PreAction":	"Module\\Hooks\\Shop\\Account\\NewslettersNoAccount\\PreAction"
-   },
-   "Shop/TellAFriend": {
-    "PreAction":	"Module\\Hooks\\Shop\\Products\\TellAFriend\\PreAction"
    },
    "Shop/AllShop": {
     "GoogleRecaptchaDisplay":	"Module\\Hooks\\Shop\\AllShop\\GoogleRecaptchaDisplay",

@@ -1,6 +1,0 @@
-cfg_recaptcha_antispam_simple_status_title = Statut
-cfg_recaptcha_antispam_simple_status_description = Souhaitez vous activer ce module à votre boutique
-
-cfg_recaptcha_antispam_simple_status_true = True
-cfg_recaptcha_antispam_simple_status_false = False
-

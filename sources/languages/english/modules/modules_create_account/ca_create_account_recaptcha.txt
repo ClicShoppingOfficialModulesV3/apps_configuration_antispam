@@ -1,2 +1,0 @@
-modules_create_account_recaptcha_title = Do you want display the google recaptcha ?
-modules_create_account_recaptcha_description = Display the google recaptcha

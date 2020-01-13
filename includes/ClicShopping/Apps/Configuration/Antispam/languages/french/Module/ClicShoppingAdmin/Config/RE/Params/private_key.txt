@@ -1,3 +1,0 @@
-cfg_recaptcha_antispam_recaptcha_private_key_title = Clef privée Google Recaptcha
-cfg_recaptcha_antispam_recaptcha_private_key_description = Pour obtenir l'ensemble des éléments,veuillez vous connecter sur : https://www.google.com/recaptcha<br />
-Veuillez à ne pas oublier d'activer le module Repcaptcha dans la section Configuration / SEO / Meta modules
