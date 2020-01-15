@@ -36,9 +36,8 @@
    "Shop/NewslettersNoAccount": {
     "PreAction":	"Module\\Hooks\\Shop\\Account\\NewslettersNoAccount\\PreAction"
    },
-   "Shop/AllShop": {
-    "GoogleRecaptchaDisplay":	"Module\\Hooks\\Shop\\AllShop\\GoogleRecaptchaDisplay",
-    "GoogleRecaptchaProcess":	"Module\\Hooks\\Shop\\AllShop\\GoogleRecaptchaProcess"
+   "Shop/ReviewsWrite": {
+    "PreAction":	"Module\\Hooks\\Shop\\Products\\ReviewsWrite\\PreAction"
    }
   }
  },

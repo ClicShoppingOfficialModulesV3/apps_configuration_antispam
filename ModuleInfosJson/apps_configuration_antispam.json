@@ -5,7 +5,7 @@
   "is_free":   "yes",
   "is_core": "no",
   "website_link_to_sell" : "",
-  "version":			"2.0",
+  "version":			"2.01",
   "req_core_version":	3.0,
   "license":			"GPL 2 - MIT",
   "tag":			    "configuration, antispam, recaptcha",

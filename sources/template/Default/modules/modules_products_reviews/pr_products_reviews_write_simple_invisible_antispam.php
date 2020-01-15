@@ -13,7 +13,7 @@
   use ClicShopping\OM\CLICSHOPPING;
   use ClicShopping\OM\HTML;
 
-  class ta_tell_a_friend_simple_invisible_antispam {
+  class pr_products_reviews_write_simple_invisible_antispam {
     public $code;
     public $group;
     public $title;
@@ -25,16 +25,15 @@
       $this->code = get_class($this);
       $this->group = basename(__DIR__);
 
-      $this->title = CLICSHOPPING::getDef('modules_tell_a_friend_simple_invisible_antispam_title');
-      $this->description = CLICSHOPPING::getDef('modules_tell_a_friend_simple_invisible_antispam_description');
+      $this->title = CLICSHOPPING::getDef('modules_products_reviews_write_simple_invisible_antispam_title');
+      $this->description = CLICSHOPPING::getDef('modules_products_reviews_write_simple_invisible_antispam_description');
 
-      if ( defined('MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_STATUS') ) {
-        $this->sort_order = (int)MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_SORT_ORDER;
-        $this->enabled = (MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True');
+      if ( defined('MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS') ) {
+        $this->sort_order = (int)MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_SORT_ORDER;
+        $this->enabled = (MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True');
       }
 
-      if ((!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False') || (!defined('CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND') || CLICSHOPPING_APP_ANTISPAM_TELL_A_FRIEND == 'False')) {
-
+      if ((!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False') || (!defined('CLICSHOPPING_APP_ANTISPAM_REVIEWS_WRITE') || CLICSHOPPING_APP_ANTISPAM_REVIEWS_WRITE == 'False')) {
         $this->enabled = false;
       }
     }
@@ -42,13 +41,13 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Account'] ) && isset($_GET['TellAFriend']) ) {
-        $tell_a_friend_invisible_antispam = '<!--  tell_a_friend_invisible_invisible_antispam start -->' . "\n";
-        $tell_a_friend_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'class="hiddenRecaptcha"');
-        $tell_a_friend_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'class="hiddenRecaptcha"');
-        $tell_a_friend_invisible_antispam .= '<!-- tell_a_friend_invisible_invisible_antispam end -->' . "\n";
+      if (isset($_GET['Products']) && isset($_GET['ReviewsWrite']) && !isset($_GET['Success'])) {
+        $products_reviews_write_invisible_antispam = '<!--  products_reviews_write_invisible_invisible_antispam start -->' . "\n";
+        $products_reviews_write_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'class="hiddenRecaptcha"');
+        $products_reviews_write_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'class="hiddenRecaptcha"');
+        $products_reviews_write_invisible_antispam .= '<!-- products_reviews_write_invisible_invisible_antispam end -->' . "\n";
 
-        $CLICSHOPPING_Template->addBlock($tell_a_friend_invisible_antispam, $this->group);
+        $CLICSHOPPING_Template->addBlock($products_reviews_write_invisible_antispam, $this->group);
       }
     }
 
@@ -57,16 +56,15 @@
     }
 
     public function check() {
-      return defined('MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_STATUS');
+      return defined('MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS');
     }
 
     public function install() {
       $CLICSHOPPING_Db = Registry::get('Db');
 
-
       $CLICSHOPPING_Db->save('configuration', [
           'configuration_title' => 'Do you want to enable this module ?',
-          'configuration_key' => 'MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_STATUS',
+          'configuration_key' => 'MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS',
           'configuration_value' => 'True',
           'configuration_description' => 'Do you want to enable this module in your shop ?',
           'configuration_group_id' => '6',
@@ -78,8 +76,8 @@
 
       $CLICSHOPPING_Db->save('configuration', [
           'configuration_title' => 'Sort order',
-          'configuration_key' => 'MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_SORT_ORDER',
-          'configuration_value' => '360',
+          'configuration_key' => 'MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_SORT_ORDER',
+          'configuration_value' => '550',
           'configuration_description' => 'Sort order of display. Lowest is displayed first. The sort order must be different on every module',
           'configuration_group_id' => '6',
           'sort_order' => '10',
@@ -94,8 +92,8 @@
     }
 
     public function keys() {
-      return ['MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_STATUS',
-              'MODULES_TELL_A_FRIEND_SIMPLE_INVISIBLE_ANTISPAM_SORT_ORDER'
+      return ['MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS',
+              'MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_SORT_ORDER'
              ];
     }
   }
