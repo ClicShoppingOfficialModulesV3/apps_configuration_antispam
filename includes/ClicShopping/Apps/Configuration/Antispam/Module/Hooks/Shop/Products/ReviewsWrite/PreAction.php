@@ -68,7 +68,7 @@
           }
 
           if ($error === true) {
-            $this->messageStack->add(CLICSHOPPING::getDef('text_error_antispam'), 'error');
+            $this->messageStack->add(CLICSHOPPING::getDef('text_error_antispam'), 'error', 'rewiews_write');
             CLICSHOPPING::redirect(null, 'Products&TellAFriend');
           }
         }
