@@ -75,7 +75,7 @@
           }
 
           if ($error === true) {
-            $this->messageStack->add(CLICSHOPPING::getDef('text_error_antispam'), 'error', 'contact');
+            $this->messageStack->add(CLICSHOPPING::getDef('text_error_antispam'), 'error');
             CLICSHOPPING::redirect(null, 'Info&Contact&error=antispam');
           }
         }

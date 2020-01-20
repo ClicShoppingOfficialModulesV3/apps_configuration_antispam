@@ -6,7 +6,7 @@
   "is_core": "no",
   "website_link_to_sell" : "",
   "version":			"2.01",
-  "req_core_version":	3.0,
+  "req_core_version":	3.01,
   "license":			"GPL 2 - MIT",
   "tag":			    "configuration, antispam, recaptcha",
   "install":            "includes/ClicShopping/Apps/Configuration/",

@@ -26,7 +26,7 @@
       $m = Registry::get('AntispamAdminConfig' . $current_module);
       $m->uninstall();
 
-      $CLICSHOPPING_MessageStack->add($CLICSHOPPING_Antispam->getDef('alert_module_uninstall_success'), 'success', 'Antispam');
+      $CLICSHOPPING_MessageStack->add($CLICSHOPPING_Antispam->getDef('alert_module_uninstall_success'), 'success');
 
       $CLICSHOPPING_Antispam->redirect('Configure&module=' . $current_module);
     }

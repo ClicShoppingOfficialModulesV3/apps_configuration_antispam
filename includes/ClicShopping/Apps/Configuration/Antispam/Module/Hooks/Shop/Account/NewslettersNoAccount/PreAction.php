@@ -75,7 +75,7 @@
           }
 
           if ($error === true) {
-            $this->messageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'error', 'account');
+            $this->messageStack->add(CLICSHOPPING::getDef('entry_email_address_check_error_number'), 'error');
             CLICSHOPPING::redirect(null, 'Account&NewslettersNoAccount');
           }
         }
