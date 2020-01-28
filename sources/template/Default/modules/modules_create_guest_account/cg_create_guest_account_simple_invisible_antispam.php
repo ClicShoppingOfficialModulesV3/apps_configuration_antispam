@@ -43,8 +43,8 @@
 
       if (isset($_GET['Account'] ) && isset($_GET['CreateGuestAccount'])  && !isset($_GET['Success']) ) {
         $create_guest_account_invisible_antispam = '<!--  create_guest_account_invisible_invisible_antispam start -->' . "\n";
-        $create_guest_account_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'class="hiddenRecaptcha"');
-        $create_guest_account_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'class="hiddenRecaptcha"');
+        $create_guest_account_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'id="hiddenRecaptcha"', null, null, 'hiddenRecaptcha');
+        $create_guest_account_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'id="hiddenRecaptcha"', null, null, 'hiddenRecaptcha');
         $create_guest_account_invisible_antispam .= '<!-- create_guest_account_invisible_invisible_antispam end -->' . "\n";
 
         $CLICSHOPPING_Template->addBlock($create_guest_account_invisible_antispam, $this->group);
