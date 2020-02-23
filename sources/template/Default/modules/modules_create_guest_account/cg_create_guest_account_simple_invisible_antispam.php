@@ -41,7 +41,7 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Account'] ) && isset($_GET['CreateGuestAccount'])  && !isset($_GET['Success']) ) {
+      if (isset($_GET['GuestCustomer'] ) && isset($_GET['Create'])  && !isset($_GET['Success'])) {
         $create_guest_account_invisible_antispam = '<!--  create_guest_account_invisible_invisible_antispam start -->' . "\n";
         $create_guest_account_invisible_antispam .= HTML::inputField('invisible_recaptcha', '', 'id="hiddenRecaptcha"', null, null, 'hiddenRecaptcha');
         $create_guest_account_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'id="hiddenRecaptcha"', null, null, 'hiddenRecaptcha');

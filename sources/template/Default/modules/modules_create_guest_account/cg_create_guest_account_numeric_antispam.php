@@ -41,7 +41,7 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Account'] ) && isset($_GET['CreateGuestAccount']) && !isset($_GET['Success']) ) {
+      if (isset($_GET['GuestCustomer'] ) && isset($_GET['Create'])  && !isset($_GET['Success'])) {
         $content_width = (int)MODULES_CREATE_GUEST_ACCOUNT_NUMERIC_ANTISPAM_CONTENT_WIDTH;
 
         $antispam = AntispamClass::getConfirmationSimpleAntiSpam();
