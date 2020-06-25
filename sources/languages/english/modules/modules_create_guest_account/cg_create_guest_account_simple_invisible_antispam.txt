@@ -1,2 +1,2 @@
-modules_create_guest_account_simple_invisible_antispam_title = Do you want display a hide antispam (trap)?
+modules_create_guest_account_simple_invisible_antispam_title = Do you want to display a hide antispam (trap)?
 modules_create_guest_account_simple_invisible_antispam_description = Display a hidec_antispam
