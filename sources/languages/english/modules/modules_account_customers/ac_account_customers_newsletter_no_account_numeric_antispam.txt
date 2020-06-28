@@ -1,4 +1,4 @@
-modules_account_customers_newsletter_no_account_numeric_antispam_title = Do you want display a numeric antispam ?
+modules_account_customers_newsletter_no_account_numeric_antispam_title = Do you want to display a numeric antispam ?
 modules_account_customers_newsletter_no_account_numeric_antispam_description = Display a numeric antispam
 
 entry_numeric_antispam = How many :
