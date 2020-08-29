@@ -16,10 +16,10 @@
   class ac_account_customers_newsletters_no_account_simple_antispam {
     public $code;
     public $group;
-    public $title;
-    public $description;
-    public $sort_order;
-    public $enabled = false;
+    public string $title;
+    public string $description;
+    public ?int $sort_order = 0;
+    public bool $enabled = false;
 
     public function __construct() {
       $this->code = get_class($this);
@@ -28,7 +28,7 @@
       $this->title = CLICSHOPPING::getDef('modules_account_customers_newsletter_no_account_simple_antispam_title');
       $this->description = CLICSHOPPING::getDef('modules_account_customers_newsletter_no_account_simple_antispam_description');
 
-      if ( defined('MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS') ) {
+      if (defined('MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS')) {
         $this->sort_order = (int)MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_SORT_ORDER;
         $this->enabled = (MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_SIMPLE_ANTISPAM_STATUS == 'True');
       }

@@ -16,10 +16,10 @@
   class pr_products_reviews_write_simple_invisible_antispam {
     public $code;
     public $group;
-    public $title;
-    public $description;
-    public $sort_order;
-    public $enabled = false;
+    public string $title;
+    public string $description;
+    public ?int $sort_order = 0;
+    public bool $enabled = false;
 
     public function __construct() {
       $this->code = get_class($this);
@@ -28,7 +28,7 @@
       $this->title = CLICSHOPPING::getDef('modules_products_reviews_write_simple_invisible_antispam_title');
       $this->description = CLICSHOPPING::getDef('modules_products_reviews_write_simple_invisible_antispam_description');
 
-      if ( defined('MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS') ) {
+      if (defined('MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS')) {
         $this->sort_order = (int)MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_SORT_ORDER;
         $this->enabled = (MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True');
       }

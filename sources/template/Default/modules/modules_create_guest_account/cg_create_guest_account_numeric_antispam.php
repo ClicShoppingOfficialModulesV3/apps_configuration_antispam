@@ -16,10 +16,10 @@
   class cg_create_guest_account_numeric_antispam {
     public $code;
     public $group;
-    public $title;
-    public $description;
-    public $sort_order;
-    public $enabled = false;
+    public string $title;
+    public string $description;
+    public ?int $sort_order = 0;
+    public bool $enabled = false;
 
     public function __construct() {
       $this->code = get_class($this);
@@ -28,7 +28,7 @@
       $this->title = CLICSHOPPING::getDef('modules_create_guest_account_numeric_antispam_title');
       $this->description = CLICSHOPPING::getDef('modules_create_guest_account_numeric_antispam_description');
 
-      if ( defined('MODULES_CREATE_GUEST_ACCOUNT_NUMERIC_ANTISPAM_STATUS') ) {
+      if (defined('MODULES_CREATE_GUEST_ACCOUNT_NUMERIC_ANTISPAM_STATUS')) {
         $this->sort_order = (int)MODULES_CREATE_GUEST_ACCOUNT_NUMERIC_ANTISPAM_SORT_ORDER;
         $this->enabled = (MODULES_CREATE_GUEST_ACCOUNT_NUMERIC_ANTISPAM_STATUS == 'True');
       }
@@ -41,7 +41,7 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['GuestCustomer'] ) && isset($_GET['Create']) && !isset($_GET['Success'])) {
+      if (isset($_GET['GuestCustomer']) && isset($_GET['Create']) && !isset($_GET['Success'])) {
         $content_width = (int)MODULES_CREATE_GUEST_ACCOUNT_NUMERIC_ANTISPAM_CONTENT_WIDTH;
 
         $antispam = AntispamClass::getConfirmationSimpleAntiSpam();

@@ -16,10 +16,10 @@
   class co_contact_us_simple_invisible_antispam {
     public $code;
     public $group;
-    public $title;
-    public $description;
-    public $sort_order;
-    public $enabled = false;
+    public string $title;
+    public string $description;
+    public ?int $sort_order = 0;
+    public bool $enabled = false;
 
     public function __construct() {
       $this->code = get_class($this);
@@ -28,7 +28,7 @@
       $this->title = CLICSHOPPING::getDef('modules_contact_us_simple_invisible_antispam_title');
       $this->description = CLICSHOPPING::getDef('modules_contact_us_simple_invisible_antispam_description');
 
-      if ( defined('MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS') ) {
+      if (defined('MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS')) {
         $this->sort_order = (int)MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_SORT_ORDER;
         $this->enabled = (MODULES_CONTACT_US_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True');
       }
