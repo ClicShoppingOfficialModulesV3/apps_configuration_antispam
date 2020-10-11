@@ -39,8 +39,12 @@
      */
     private static function getValidateSimpleAntispam($antispan_confirmation): bool
     {
-      if ($antispan_confirmation === $_SESSION['createResponseAntiSpam']) {
-        $valid_antispan_confirmation = false;
+      if (isset($_SESSION['createResponseAntiSpam'])) {
+        if ($antispan_confirmation === $_SESSION['createResponseAntiSpam']) {
+          $valid_antispan_confirmation = false;
+        } else {
+          $valid_antispan_confirmation = true;
+        }
       } else {
         $valid_antispan_confirmation = true;
       }
@@ -57,11 +61,14 @@
     public static function getResultSimpleAntispam(): bool
     {
       $error = false;
+      if (isset($_POST['antispam'])) {
+        $antispam = HTML::sanitize($_POST['antispam']);
+        $result = md5($antispam);
 
-      $antispam = HTML::sanitize($_POST['antispam']);
-      $antispam = md5($antispam);
-
-      if (self::getValidateSimpleAntispam($antispam) === true) {
+        if (self::getValidateSimpleAntispam($result) === true) {
+          $error = true;
+        }
+      } else {
         $error = true;
       }
 
