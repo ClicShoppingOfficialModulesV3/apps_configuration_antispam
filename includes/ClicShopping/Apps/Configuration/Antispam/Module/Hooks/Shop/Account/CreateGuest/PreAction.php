@@ -21,6 +21,7 @@
   class PreAction implements \ClicShopping\OM\Modules\HooksInterface
   {
     protected $app;
+    public $messgStack;
 
     public function __construct()
     {
