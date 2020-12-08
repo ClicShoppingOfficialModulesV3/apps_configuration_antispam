@@ -36,14 +36,11 @@
     private function getResultHideFieldAntispam()
     {
       $error = false;
-
-      $antispam = HTML::sanitize($_POST['invisible_recaptcha']);
-      $antispam_clicshopping = HTML::sanitize($_POST['invisible_clicshopping']);
-
-      if (!empty($antispam) && !empty($antispam_clicshopping)) {
-        exit();
+  
+      if (!isset($_POST['invisible_clicshopping'])) {
+        $error = true;
       }
-
+      
       return $error;
     }
 
