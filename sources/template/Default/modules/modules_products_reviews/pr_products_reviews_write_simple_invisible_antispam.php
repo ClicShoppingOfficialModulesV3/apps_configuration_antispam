@@ -28,12 +28,12 @@
       $this->title = CLICSHOPPING::getDef('modules_products_reviews_write_simple_invisible_antispam_title');
       $this->description = CLICSHOPPING::getDef('modules_products_reviews_write_simple_invisible_antispam_description');
 
-      if (defined('MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS')) {
+      if (\defined('MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS')) {
         $this->sort_order = (int)MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_SORT_ORDER;
         $this->enabled = (MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS == 'True');
       }
 
-      if ((!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False') || (!defined('CLICSHOPPING_APP_ANTISPAM_REVIEWS_WRITE') || CLICSHOPPING_APP_ANTISPAM_REVIEWS_WRITE == 'False')) {
+      if ((!\defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False') || (!\defined('CLICSHOPPING_APP_ANTISPAM_REVIEWS_WRITE') || CLICSHOPPING_APP_ANTISPAM_REVIEWS_WRITE == 'False')) {
         $this->enabled = false;
       }
     }
@@ -55,7 +55,7 @@
     }
 
     public function check() {
-      return defined('MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS');
+      return \defined('MODULES_PRODUCTS_REVIEWS_WRITE_SIMPLE_INVISIBLE_ANTISPAM_STATUS');
     }
 
     public function install() {

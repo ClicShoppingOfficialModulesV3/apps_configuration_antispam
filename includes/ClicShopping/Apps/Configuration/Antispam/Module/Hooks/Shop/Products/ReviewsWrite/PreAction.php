@@ -46,18 +46,18 @@
 
     public function execute()
     {
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS == 'False') {
+      if (!\defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS == 'False') {
         return false;
       }
 
       if (isset($_GET['Products']) && isset($_GET['ReviewsWrite']) && isset($_GET['Process'])) {
-        if (defined('CLICSHOPPING_APP_ANTISPAM_REWIEWS_WRITE') && CLICSHOPPING_APP_ANTISPAM_REWIEWS_WRITE == 'True') {
+        if (\defined('CLICSHOPPING_APP_ANTISPAM_REWIEWS_WRITE') && CLICSHOPPING_APP_ANTISPAM_REWIEWS_WRITE == 'True') {
           $error = false;
           $error_invisible = false;
 //
 // Hiddenf fields
 //
-          if (defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True') {
+          if (\defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') && CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'True') {
             $error_invisible = $this->getResultHideFieldAntispam();
           }
 

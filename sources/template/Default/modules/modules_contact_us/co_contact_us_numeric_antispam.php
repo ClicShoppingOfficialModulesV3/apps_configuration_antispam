@@ -28,12 +28,12 @@
       $this->title = CLICSHOPPING::getDef('modules_contact_us_numeric_antispam_title');
       $this->description = CLICSHOPPING::getDef('modules_contact_us_numeric_antispam_description');
 
-      if (defined('MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS')) {
+      if (\defined('MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS')) {
         $this->sort_order = (int)MODULES_CONTACT_US_NUMERIC_ANTISPAM_SORT_ORDER;
         $this->enabled = (MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS == 'True');
       }
 
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS == 'False' || !defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') || CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False') {
+      if (!\defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS == 'False' || !\defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') || CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False') {
         $this->enabled = false;
       }
     }
@@ -63,7 +63,7 @@
     }
 
     public function check() {
-      return defined('MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS');
+      return \defined('MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS');
     }
 
     public function install() {

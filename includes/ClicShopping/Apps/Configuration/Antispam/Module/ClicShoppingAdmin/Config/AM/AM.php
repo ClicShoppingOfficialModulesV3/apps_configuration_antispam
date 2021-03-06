@@ -24,14 +24,14 @@
       $this->title = $this->app->getDef('module_am_title');
       $this->short_title = $this->app->getDef('module_am_short_title');
       $this->introduction = $this->app->getDef('module_am_introduction');
-      $this->is_installed = defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') && (trim(CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS) != '');
+      $this->is_installed = \defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') && (trim(CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS) != '');
     }
 
     public function install()
     {
       parent::install();
 
-      if (defined('MODULE_MODULES_ANTISPAM_INSTALLED')) {
+      if (\defined('MODULE_MODULES_ANTISPAM_INSTALLED')) {
         $installed = explode(';', MODULE_MODULES_ANTISPAM_INSTALLED);
       }
 

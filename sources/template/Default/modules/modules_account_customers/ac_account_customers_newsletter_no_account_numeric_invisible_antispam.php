@@ -28,12 +28,12 @@
       $this->title = CLICSHOPPING::getDef('modules_account_customers_newsletter_no_account_numeric_invisible_antispam_title');
       $this->description = CLICSHOPPING::getDef('modules_account_customers_newsletter_no_account_numeric_invisible_antispam_description');
 
-      if (defined('MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_NUMERIC_INVISIBLE_ANTISPAM_STATUS')) {
+      if (\defined('MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_NUMERIC_INVISIBLE_ANTISPAM_STATUS')) {
         $this->sort_order = (int)MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_NUMERIC_INVISIBLE_ANTISPAM_SORT_ORDER;
         $this->enabled = (MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_NUMERIC_INVISIBLE_ANTISPAM_STATUS == 'True');
       }
 
-      if (!defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False' || CLICSHOPPING_APP_ANTISPAM_NEWSLETTER_NO_ACCOUNT == 'False') {
+      if (!\defined('CLICSHOPPING_APP_ANTISPAM_INVISIBLE') || CLICSHOPPING_APP_ANTISPAM_INVISIBLE == 'False' || CLICSHOPPING_APP_ANTISPAM_NEWSLETTER_NO_ACCOUNT == 'False') {
         $this->enabled = false;
       }
     }
@@ -55,7 +55,7 @@
     }
 
     public function check() {
-      return defined('MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_NUMERIC_INVISIBLE_ANTISPAM_STATUS');
+      return \defined('MODULES_ACCOUNT_CUSTOMERS_NEWSLETTER_NO_ACCOUNT_NUMERIC_INVISIBLE_ANTISPAM_STATUS');
     }
 
     public function install() {

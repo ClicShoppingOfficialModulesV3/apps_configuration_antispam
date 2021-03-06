@@ -39,7 +39,7 @@
         }
       }
 
-      $this->page->data['current_module'] = (isset($_GET['module']) && in_array($_GET['module'], $modules)) ? $_GET['module'] : $default_module;
+      $this->page->data['current_module'] = (isset($_GET['module']) && \in_array($_GET['module'], $modules)) ? $_GET['module'] : $default_module;
     }
 
     private static function installDbMenuAdministration()
@@ -70,7 +70,7 @@
 
         $languages = $CLICSHOPPING_Language->getLanguages();
 
-        for ($i = 0, $n = count($languages); $i < $n; $i++) {
+        for ($i = 0, $n = \count($languages); $i < $n; $i++) {
 
           $language_id = $languages[$i]['id'];
 
