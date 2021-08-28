@@ -20,7 +20,7 @@
 
   class PreAction implements \ClicShopping\OM\Modules\HooksInterface
   {
-    protected $app;
+    protected mixed $app;
     public $messageStack;
 
     public function __construct()
