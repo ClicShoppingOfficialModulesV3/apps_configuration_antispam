@@ -50,7 +50,7 @@
         return false;
       }
 
-      if (isset($_GET['Account']) && isset($_GET['NewslettersNoAccount']) && isset($_GET['Process'])) {
+      if (isset($_GET['Account'], $_GET['NewslettersNoAccount'], $_GET['Process'])) {
         if (\defined('CLICSHOPPING_APP_ANTISPAM_NEWSLETTER_NO_ACCOUNT') && CLICSHOPPING_APP_ANTISPAM_NEWSLETTER_NO_ACCOUNT == 'True') {
           $error = false;
           $error_numeric = false;

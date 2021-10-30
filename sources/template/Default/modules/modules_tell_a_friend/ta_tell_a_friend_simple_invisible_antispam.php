@@ -42,7 +42,7 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Account']) && isset($_GET['TellAFriend'])) {
+      if (isset($_GET['Account'], $_GET['TellAFriend'])) {
         $tell_a_friend_invisible_antispam = '<!--  tell_a_friend_invisible_invisible_antispam start -->' . "\n";
         $tell_a_friend_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'id="hiddenRecaptcha"', null, null, 'hiddenRecaptcha');
         $tell_a_friend_invisible_antispam .= '<!-- tell_a_friend_invisible_invisible_antispam end -->' . "\n";

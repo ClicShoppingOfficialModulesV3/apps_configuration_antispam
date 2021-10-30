@@ -14,7 +14,7 @@
   class GE extends \ClicShopping\Apps\Configuration\Antispam\Module\ClicShoppingAdmin\Config\ConfigAbstract
   {
     public $is_installed = true;
-    public $is_uninstallable = true;
+    public bool $is_uninstallable = true;
     public $sort_order = 100000;
 
     protected function init()

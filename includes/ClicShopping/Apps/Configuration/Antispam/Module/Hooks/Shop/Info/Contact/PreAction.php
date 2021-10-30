@@ -50,7 +50,7 @@
         return false;
       }
 
-      if (isset($_GET['Info']) && isset($_GET['Contact']) && isset($_GET['Process'])) {
+      if (isset($_GET['Info'], $_GET['Contact'], $_GET['Process'])) {
         if (\defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') && CLICSHOPPING_APP_ANTISPAM_CONTACT == 'True') {
           $error = false;
           $error_numeric = false;

@@ -50,7 +50,7 @@
         return false;
       }
 
-      if (isset($_GET['Products']) && isset($_GET['ReviewsWrite']) && isset($_GET['Process'])) {
+      if (isset($_GET['Products'], $_GET['ReviewsWrite'], $_GET['Process'])) {
         if (\defined('CLICSHOPPING_APP_ANTISPAM_REWIEWS_WRITE') && CLICSHOPPING_APP_ANTISPAM_REWIEWS_WRITE == 'True') {
           $error = false;
           $error_invisible = false;

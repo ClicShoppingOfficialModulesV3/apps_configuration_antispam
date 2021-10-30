@@ -50,7 +50,7 @@
         return false;
       }
 
-      if (isset($_GET['Account']) && isset($_GET['CreatePro']) && isset($_GET['Process'])) {
+      if (isset($_GET['Account'], $_GET['CreatePro'], $_GET['Process'])) {
         if (\defined('CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO') && CLICSHOPPING_APP_ANTISPAM_CREATE_ACCOUNT_PRO == 'True') {
           $error = false;
           $error_numeric = false;

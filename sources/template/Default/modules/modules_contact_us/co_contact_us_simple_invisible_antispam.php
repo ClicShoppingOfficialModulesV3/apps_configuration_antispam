@@ -14,10 +14,10 @@
   use ClicShopping\OM\HTML;
 
   class co_contact_us_simple_invisible_antispam {
-    public $code;
+    public string $code;
     public $group;
-    public string $title;
-    public string $description;
+    public $title;
+    public $description;
     public ?int $sort_order = 0;
     public bool $enabled = false;
 
@@ -41,7 +41,7 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Info']) && isset($_GET['Contact']) && !isset($_GET['Success'])) {
+      if (isset($_GET['Info'], $_GET['Contact']) && !isset($_GET['Success'])) {
         $contact_us_invisible_antispam = '<!--  contact_us_invisible_invisible_antispam start -->' . "\n";
         $contact_us_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'id="hiddenRecaptcha"', null, null, 'hiddenRecaptcha');
         $contact_us_invisible_antispam .= '<!-- contact_us_invisible_invisible_antispam end -->' . "\n";

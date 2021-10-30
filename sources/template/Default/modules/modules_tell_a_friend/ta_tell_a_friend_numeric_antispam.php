@@ -41,7 +41,7 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Products']) && isset($_GET['TellAFriend'])) {
+      if (isset($_GET['Products'], $_GET['TellAFriend'])) {
         $content_width = (int)MODULES_TELL_A_FRIEND_NUMERIC_ANTISPAM_CONTENT_WIDTH;
 
         $antispam = AntispamClass::getConfirmationSimpleAntiSpam();

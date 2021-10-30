@@ -14,10 +14,10 @@
   use ClicShopping\OM\HTML;
 
   class pr_products_reviews_write_simple_invisible_antispam {
-    public $code;
+    public string $code;
     public $group;
-    public string $title;
-    public string $description;
+    public $title;
+    public $description;
     public ?int $sort_order = 0;
     public bool $enabled = false;
 
@@ -41,7 +41,7 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Products']) && isset($_GET['ReviewsWrite']) && !isset($_GET['Success'])) {
+      if (isset($_GET['Products'], $_GET['ReviewsWrite']) && !isset($_GET['Success'])) {
         $products_reviews_write_invisible_antispam = '<!--  products_reviews_write_invisible_invisible_antispam start -->' . "\n";
         $products_reviews_write_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'id="hiddenRecaptcha"', null, null, 'hiddenRecaptcha');
         $products_reviews_write_invisible_antispam .= '<!-- products_reviews_write_invisible_invisible_antispam end -->' . "\n";

@@ -14,10 +14,10 @@
   use ClicShopping\Apps\Configuration\Antispam\Classes\AntispamClass;
 
   class cap_create_account_pro_numeric_antispam {
-    public $code;
+    public string $code;
     public $group;
-    public string $title;
-    public string $description;
+    public $title;
+    public $description;
     public ?int $sort_order = 0;
     public bool $enabled = false;
 
@@ -41,7 +41,7 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['Account']) && isset($_GET['CreatePro']) && !isset($_GET['Success'])) {
+      if (isset($_GET['Account'], $_GET['CreatePro']) && !isset($_GET['Success'])) {
         $content_width = (int)MODULES_CREATE_ACCOUNT_PRO_NUMERIC_ANTISPAM_CONTENT_WIDTH;
 
         $antispam = AntispamClass::getConfirmationSimpleAntiSpam();

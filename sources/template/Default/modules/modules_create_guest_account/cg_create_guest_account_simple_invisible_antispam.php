@@ -14,10 +14,10 @@
   use ClicShopping\OM\HTML;
 
   class cg_create_guest_account_simple_invisible_antispam {
-    public $code;
+    public string $code;
     public $group;
-    public string $title;
-    public string $description;
+    public $title;
+    public $description;
     public ?int $sort_order = 0;
     public bool $enabled = false;
 
@@ -41,7 +41,7 @@
     public function execute() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      if (isset($_GET['GuestCustomer']) && isset($_GET['Create']) && !isset($_GET['Success'])) {
+      if (isset($_GET['GuestCustomer'], $_GET['Create']) && !isset($_GET['Success'])) {
         $create_guest_account_invisible_antispam = '<!--  create_guest_account_invisible_invisible_antispam start -->' . "\n";
         $create_guest_account_invisible_antispam .= HTML::inputField('invisible_clicshopping', '', 'id="hiddenRecaptcha"', null, null, 'hiddenRecaptcha');
         $create_guest_account_invisible_antispam .= '<!-- create_guest_account_invisible_invisible_antispam end -->' . "\n";
