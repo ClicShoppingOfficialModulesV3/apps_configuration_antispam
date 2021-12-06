@@ -15,7 +15,7 @@
 
   class co_contact_us_numeric_antispam {
     public string $code;
-    public $group;
+    public string $group;
     public $title;
     public $description;
     public ?int $sort_order = 0;
@@ -30,12 +30,15 @@
 
       if (\defined('MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS')) {
         $this->sort_order = (int)MODULES_CONTACT_US_NUMERIC_ANTISPAM_SORT_ORDER;
-        $this->enabled = (MODULES_CONTACT_US_NUMERIC_ANTISPAM_STATUS == 'True');
+        $this->enabled = 'True';
+      } else {
+        $this->enabled = 'false';
       }
-
+/*
       if (!\defined('CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS') || CLICSHOPPING_APP_ANTISPAM_AM_NUMERIC_STATUS == 'False' || !\defined('CLICSHOPPING_APP_ANTISPAM_CONTACT') || CLICSHOPPING_APP_ANTISPAM_CONTACT == 'False') {
         $this->enabled = false;
       }
+*/
     }
 
     public function execute() {
