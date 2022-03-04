@@ -17,7 +17,7 @@
   class create_account extends \ClicShopping\Apps\Configuration\Antispam\Module\ClicShoppingAdmin\Config\ConfigParamAbstract
   {
     public $default = 'False';
-    public $sort_order = 50;
+    public ?int $sort_order = 50;
 
     protected function init()
     {

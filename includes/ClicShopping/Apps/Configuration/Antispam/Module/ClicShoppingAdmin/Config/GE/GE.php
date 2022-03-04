@@ -15,7 +15,7 @@
   {
     public bool $is_installed = true;
     public bool $is_uninstallable = true;
-    public $sort_order = 100000;
+    public ?int $sort_order = 100000;
 
     protected function init()
     {

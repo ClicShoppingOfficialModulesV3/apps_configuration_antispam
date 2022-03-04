@@ -17,7 +17,7 @@
   class reviews_write extends \ClicShopping\Apps\Configuration\Antispam\Module\ClicShoppingAdmin\Config\ConfigParamAbstract
   {
     public $default = 'False';
-    public $sort_order = 40;
+    public ?int $sort_order = 40;
 
     protected function init()
     {

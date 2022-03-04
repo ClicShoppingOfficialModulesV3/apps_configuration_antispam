@@ -50,7 +50,7 @@
         <div class="separator"></div
         <div class="col-md-12">
           <div>
-            <div class="col-md-12 text-md-center">
+            <div class="col-md-12 text-center">
               <?php
                 echo HTML::form('configure', CLICSHOPPING::link(null, 'A&Configuration\Antispam&Configure'));
                 echo HTML::button($CLICSHOPPING_Antispam->getDef('button_configure'), null, null, 'primary');

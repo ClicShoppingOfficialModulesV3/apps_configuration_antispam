@@ -17,7 +17,7 @@
   class login_admin extends \ClicShopping\Apps\Configuration\Antispam\Module\ClicShoppingAdmin\Config\ConfigParamAbstract
   {
     public $default = 'False';
-    public $sort_order = 80;
+    public ?int $sort_order = 80;
 
     protected function init()
     {
